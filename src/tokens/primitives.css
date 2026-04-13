@@ -1,0 +1,199 @@
+/* ============================================
+   DESIGN CRUSH — Primitive Tokens
+   Raw values. Never reference directly in
+   components — use semantic tokens instead.
+   ============================================ */
+
+:root {
+
+  /* --- COLOUR PRIMITIVES --- */
+
+  --primitive-white:  #FFFFFF;
+  --primitive-black:  #000000;
+
+  /* Blue */
+  --primitive-blue-dark:    #1542A7;
+  --primitive-blue-default: #1971D8;
+  --primitive-blue-light:   #E3F2FE;
+
+  /* Dark Navy */
+  --primitive-dark-dark:    #002341;
+  --primitive-dark-default: #013C65;
+  --primitive-dark-light:   #E4E8ED;
+
+  /* Red */
+  --primitive-red-dark:  #CD002B;
+  --primitive-red-light: #FFECF1;
+
+  /* Orange */
+  --primitive-orange-dark:  #D96725;
+  --primitive-orange-light: #FDF4E3;
+
+  /* Green */
+  --primitive-green-dark:    #006728;
+  --primitive-green-default: #00873D;
+  --primitive-green-light:   #E7F7EB;
+
+  /* Grey */
+  --primitive-grey-dark:        #3D4041;
+  --primitive-grey-default:     #5C5E60;
+  --primitive-grey-medium:      #B7BABC;
+  --primitive-grey-light:       #DBDEE0;
+  --primitive-grey-extra-light: #F4F4F4;
+  --primitive-grey-super-light: #F7FAFC;
+
+  /* Legacy aliases — kept so existing components don't break */
+  --primitive-grey-outline-1: var(--primitive-grey-medium);
+  --primitive-grey-outline-2: var(--primitive-grey-light);
+
+  /* Yellow */
+  --primitive-yellow-dark:  #FFB700;
+  --primitive-yellow-light: #FFF9E1;
+
+  /* Teal */
+  --primitive-teal-dark:  #005147;
+  --primitive-teal-light: #DDEEED;
+
+  /* Pink */
+  --primitive-pink-dark:  #760046;
+  --primitive-pink-light: #F3E0EA;
+
+  /* Purple */
+  --primitive-purple-dark:  #6A1B9A;
+  --primitive-purple-light: #F3E5F5;
+
+  /* --- SPACING PRIMITIVES --- */
+
+  --primitive-space-0-5: 2px;
+  --primitive-space-1:   4px;
+  --primitive-space-2:   8px;
+  --primitive-space-3:   12px;
+  --primitive-space-4:   16px;
+  --primitive-space-5:   20px;
+  --primitive-space-6:   24px;
+  --primitive-space-8:   32px;
+  --primitive-space-10:  40px;
+  --primitive-space-12:  48px;
+  --primitive-space-16:  64px;
+  --primitive-space-20:  80px;
+  --primitive-space-24:  96px;
+  --primitive-space-28:  112px;
+  --primitive-space-32:  128px;
+  --primitive-space-40:  160px;
+  --primitive-space-48:  192px;
+  --primitive-space-56:  224px;
+  --primitive-space-64:  256px;
+
+  /* --- BORDER RADIUS PRIMITIVES --- */
+
+  --primitive-radius-none: 0px;
+  --primitive-radius-xs:   2px;
+  --primitive-radius-sm:   4px;
+  --primitive-radius-md:   8px;
+  --primitive-radius-lg:   12px;
+  --primitive-radius-xl:   16px;
+  --primitive-radius-full: 9999px;
+
+  /* --- BORDER WIDTH PRIMITIVES --- */
+
+  --primitive-border-default: 1px;
+  --primitive-border-thick:   2px;
+  --primitive-border-focus:   3px;
+
+  /* --- SHADOW PRIMITIVES --- */
+  /* Navy-tinted shadows — sourced from Figma Elevation page (node 85:5483)
+     Shadow color: rgba(17,51,83,x) — dark navy (same hue as brand dark)        */
+
+  --primitive-shadow-xs: 0px 1px 6px 0px rgba(17,51,83,0.06);
+  --primitive-shadow-sm: 0px 4px 12px 0px rgba(17,51,83,0.02), 0px 4px 12px 0px rgba(17,51,83,0.02);
+  --primitive-shadow-md: 0px 4px 12px 0px rgba(17,51,83,0.04), 0px 4px 12px 0px rgba(17,51,83,0.04);
+  --primitive-shadow-lg: 0px 4px 12px 0px rgba(17,51,83,0.06), 0px 4px 12px 0px rgba(17,51,83,0.06);
+  --primitive-shadow-xl: 0px 10px 24px 0px rgba(17,51,83,0.08), 0px 4px 12px 0px rgba(17,51,83,0.06);
+
+  /* --- TYPOGRAPHY PRIMITIVES --- */
+
+  --primitive-font-family: 'Roboto', sans-serif;
+
+  --primitive-font-weight-regular:  Regular;
+  --primitive-font-weight-medium:   Medium;
+  --primitive-font-weight-semibold: Semi Bold;
+  --primitive-font-weight-bold:     Bold;
+
+  --primitive-font-size-10: 10px;
+  --primitive-font-size-12: 12px;
+  --primitive-font-size-14: 14px;
+  --primitive-font-size-16: 16px;
+  --primitive-font-size-18: 18px;
+  --primitive-font-size-20: 20px;
+  --primitive-font-size-24: 24px;
+  --primitive-font-size-28: 28px;
+  --primitive-font-size-32: 32px;
+  --primitive-font-size-36: 36px;
+  --primitive-font-size-45: 45px;
+  --primitive-font-size-57: 57px;
+
+  --primitive-line-height-16: 16px;
+  --primitive-line-height-18: 18px;
+  --primitive-line-height-22: 22px;
+  --primitive-line-height-24: 24px;
+  --primitive-line-height-28: 28px;
+  --primitive-line-height-30: 30px;
+  --primitive-line-height-36: 36px;
+  --primitive-line-height-42: 42px;
+  --primitive-line-height-48: 48px;
+  --primitive-line-height-54: 54px;
+  --primitive-line-height-68: 68px;
+  --primitive-line-height-86: 86px;
+
+  /* --- SIZING PRIMITIVES --- */
+
+  --primitive-size-icon-xs:  14px;
+  --primitive-size-icon-sm:  16px;
+  --primitive-size-icon-md:  18px;
+  --primitive-size-icon-lg:  20px;
+  --primitive-size-icon-xl:  24px;
+  --primitive-size-icon-2xl: 32px;
+
+  --primitive-size-btn-sm: 32px;
+  --primitive-size-btn-md: 40px;
+  --primitive-size-btn-lg: 48px;
+
+  --primitive-size-avatar-sm: 24px;
+  --primitive-size-avatar-md: 32px;
+  --primitive-size-avatar-lg: 40px;
+
+  /* --- OPACITY PRIMITIVES --- */
+
+  --primitive-opacity-disabled: 0.4;
+  --primitive-opacity-subtle:   0.6;
+  --primitive-opacity-overlay:  0.8;
+
+  /* --- Z-INDEX PRIMITIVES --- */
+
+  --primitive-z-base:     0;
+  --primitive-z-dropdown: 100;
+  --primitive-z-sticky:   200;
+  --primitive-z-modal:    300;
+  --primitive-z-toast:    400;
+  --primitive-z-tooltip:  500;
+
+  /* --- BREAKPOINT PRIMITIVES --- */
+
+  --primitive-breakpoint-xs:  390px;
+  --primitive-breakpoint-sm:  480px;
+  --primitive-breakpoint-md:  768px;
+  --primitive-breakpoint-lg:  1024px;
+  --primitive-breakpoint-xl:  1280px;
+  --primitive-breakpoint-2xl: 1536px;
+
+  /* --- TRANSITION PRIMITIVES --- */
+
+  --primitive-transition-fast:  150ms;
+  --primitive-transition-base:  300ms;
+  --primitive-transition-slow:  500ms;
+
+  --primitive-easing-default: ease-in-out;
+  --primitive-easing-in:      ease-in;
+  --primitive-easing-out:     ease-out;
+
+}

@@ -1,0 +1,210 @@
+/* ============================================
+   DESIGN CRUSH — Semantic Tokens
+   These are the tokens you use in components.
+   Each one aliases a primitive value and
+   carries meaning, not just a raw value.
+   ============================================ */
+
+:root {
+
+  /* --- COLOUR — BRAND --- */
+
+  --color-brand-primary:       var(--primitive-blue-default);
+  --color-brand-primary-dark:  var(--primitive-blue-dark);
+  --color-brand-primary-light: var(--primitive-blue-light);
+
+  /* --- COLOUR — BACKGROUND --- */
+
+  --color-bg-white:         var(--primitive-white);
+  --color-bg-light:         var(--primitive-grey-extra-light);
+  --color-bg-lighter:       var(--primitive-grey-super-light);
+  --color-bg-grey:          var(--primitive-grey-medium); /* legacy alias — use --color-bg-grey-medium */
+  --color-bg-grey-light:    var(--primitive-grey-light);
+  --color-bg-grey-medium:   var(--primitive-grey-medium);
+  --color-bg-grey-dark:     var(--primitive-grey-dark);
+  --color-bg-dark:          var(--primitive-dark-dark);
+  --color-bg-default:       var(--primitive-dark-default);
+  --color-bg-dark-light:    var(--primitive-dark-light);
+  --color-bg-blue-light:    var(--primitive-blue-light);
+  --color-bg-red:           var(--primitive-red-dark);
+  --color-bg-red-light:     var(--primitive-red-light);
+  --color-bg-orange:        var(--primitive-orange-dark);
+  --color-bg-orange-light:  var(--primitive-orange-light);
+  --color-bg-green-dark:    var(--primitive-green-dark);
+  --color-bg-green:         var(--primitive-green-default);
+  --color-bg-green-light:   var(--primitive-green-light);
+
+  /* --- COLOUR — TEXT --- */
+
+  --color-text-dark:            var(--primitive-dark-dark);
+  --color-text-slate:           #4a5565;
+  --color-text-grey-dark:       var(--primitive-grey-dark);
+  --color-text-grey:            var(--primitive-grey-default);
+  --color-text-grey-light:      var(--primitive-grey-medium);
+  --color-text-black:           var(--primitive-black);
+  --color-text-white:           var(--primitive-white);
+  --color-text-brand-primary:   var(--primitive-blue-default);
+  --color-text-brand-primary-dark: var(--primitive-blue-dark);
+  --color-text-red:             var(--primitive-red-dark);
+  --color-text-orange:          var(--primitive-orange-dark);
+  --color-text-green:           var(--primitive-green-dark);
+
+  /* --- COLOUR — BORDER --- */
+
+  --color-border-grey:              var(--primitive-grey-medium);
+  --color-border-grey-light:        var(--primitive-grey-light);
+  --color-border-grey-dark:         var(--primitive-grey-dark);
+  --color-border-brand-primary:     var(--primitive-blue-default);
+  --color-border-brand-primary-dark: var(--primitive-blue-dark);
+  --color-border-red:               var(--primitive-red-dark);
+  --color-border-orange:            var(--primitive-orange-dark);
+  --color-border-green:             var(--primitive-green-default);
+
+  /* --- COLOUR — STATUS --- */
+
+  --color-status-red:          var(--primitive-red-dark);
+  --color-status-red-light:    var(--primitive-red-light);
+  --color-status-orange:       var(--primitive-orange-dark);
+  --color-status-orange-light: var(--primitive-orange-light);
+  --color-status-green:        var(--primitive-green-default);
+  --color-status-green-dark:   var(--primitive-green-dark);
+  --color-status-green-light:  var(--primitive-green-light);
+
+  /* --- COLOUR — ACCENT --- */
+
+  --color-accent-yellow:        var(--primitive-yellow-dark);
+  --color-accent-yellow-light:  var(--primitive-yellow-light);
+  --color-accent-teal:          var(--primitive-teal-dark);
+  --color-accent-teal-light:    var(--primitive-teal-light);
+  --color-accent-purple:        var(--primitive-purple-dark);
+  --color-accent-purple-light:  var(--primitive-purple-light);
+  --color-accent-pink:          var(--primitive-pink-dark);
+  --color-accent-pink-light:    var(--primitive-pink-light);
+
+  /* --- COLOUR — BUTTON HOVER --- */
+
+  --color-bg-input-disabled:     color-mix(in srgb, var(--color-text-grey) 4%, transparent);
+
+  --color-btn-primary-hover:     color-mix(in srgb, var(--color-brand-primary) 90%, white);
+  --color-btn-secondary-hover:   var(--color-bg-grey-light);
+  --color-btn-positive-hover:    color-mix(in srgb, var(--color-bg-green) 90%, white);
+  --color-btn-destructive-hover: color-mix(in srgb, var(--color-bg-red) 90%, white);
+
+  /* --- SPACING --- */
+
+  --spacing-0-5:  var(--primitive-space-0-5);
+  --spacing-2xs:  var(--primitive-space-0-5);
+  --spacing-xs:   var(--primitive-space-1);
+  --spacing-sm:   var(--primitive-space-2);
+  --spacing-sm-md:var(--primitive-space-3);
+  --spacing-md:   var(--primitive-space-4);
+  --spacing-md-lg:var(--primitive-space-5);
+  --spacing-lg:   var(--primitive-space-6);
+  --spacing-xl:   var(--primitive-space-8);
+  --spacing-2xl:  var(--primitive-space-12);
+  --spacing-3xl:  var(--primitive-space-16);
+  --spacing-4xl:  var(--primitive-space-20);
+  --spacing-5xl:  var(--primitive-space-24);
+  --spacing-6xl:  var(--primitive-space-32);
+
+  /* --- BORDER RADIUS --- */
+
+  --radius-xs:   var(--primitive-radius-xs);
+  --radius-sm:   var(--primitive-radius-sm);
+  --radius-md:   var(--primitive-radius-md);
+  --radius-lg:   var(--primitive-radius-lg);
+  --radius-xl:   var(--primitive-radius-xl);
+  --radius-full: var(--primitive-radius-full);
+
+  /* --- BORDER WIDTH --- */
+
+  --border-width-default: var(--primitive-border-default);
+  --border-width-thick:   var(--primitive-border-thick);
+  --border-width-focus:   var(--primitive-border-focus);
+
+  /* --- SHADOW --- */
+
+  --shadow-xs: var(--primitive-shadow-xs);
+  --shadow-sm: var(--primitive-shadow-sm);
+  --shadow-md: var(--primitive-shadow-md);
+  --shadow-lg: var(--primitive-shadow-lg);
+  --shadow-xl: var(--primitive-shadow-xl);
+
+  /* --- TYPOGRAPHY --- */
+
+  --type-family-primary: var(--primitive-font-family);
+
+  --type-weight-regular:  var(--primitive-font-weight-regular);
+  --type-weight-medium:   var(--primitive-font-weight-medium);
+  --type-weight-semibold: var(--primitive-font-weight-semibold);
+  --type-weight-bold:     var(--primitive-font-weight-bold);
+
+  --type-size-label-sm:    var(--primitive-font-size-10);
+  --type-size-label-md:    var(--primitive-font-size-12);
+  --type-size-body-sm:     var(--primitive-font-size-14);
+  --type-size-body-md:     var(--primitive-font-size-16);
+  --type-size-title-md:    var(--primitive-font-size-18);
+  --type-size-title-lg:    var(--primitive-font-size-20);
+  --type-size-headline-sm: var(--primitive-font-size-24);
+  --type-size-headline-md: var(--primitive-font-size-28);
+  --type-size-headline-lg: var(--primitive-font-size-32);
+  --type-size-display-sm:  var(--primitive-font-size-36);
+  --type-size-display-md:  var(--primitive-font-size-45);
+  --type-size-display-lg:  var(--primitive-font-size-57);
+
+  --type-lh-label-sm:    var(--primitive-line-height-16);
+  --type-lh-label-md:    var(--primitive-line-height-18);
+  --type-lh-body-sm:     var(--primitive-line-height-22);
+  --type-lh-body-md:     var(--primitive-line-height-24);
+  --type-lh-title-md:    var(--primitive-line-height-28);
+  --type-lh-title-lg:    var(--primitive-line-height-30);
+  --type-lh-headline-sm: var(--primitive-line-height-36);
+  --type-lh-headline-md: var(--primitive-line-height-42);
+  --type-lh-headline-lg: var(--primitive-line-height-48);
+  --type-lh-display-sm:  var(--primitive-line-height-54);
+  --type-lh-display-md:  var(--primitive-line-height-68);
+  --type-lh-display-lg:  var(--primitive-line-height-86);
+
+  /* --- SIZING --- */
+
+  --size-icon-xs:  var(--primitive-size-icon-xs);
+  --size-icon-sm:  var(--primitive-size-icon-sm);
+  --size-icon-md:  var(--primitive-size-icon-md);
+  --size-icon-lg:  var(--primitive-size-icon-lg);
+  --size-icon-xl:  var(--primitive-size-icon-xl);
+  --size-icon-2xl: var(--primitive-size-icon-2xl);
+
+  --size-btn-sm: var(--primitive-size-btn-sm);
+  --size-btn-md: var(--primitive-size-btn-md);
+  --size-btn-lg: var(--primitive-size-btn-lg);
+
+  --size-avatar-sm: var(--primitive-size-avatar-sm);
+  --size-avatar-md: var(--primitive-size-avatar-md);
+  --size-avatar-lg: var(--primitive-size-avatar-lg);
+
+  /* --- OPACITY --- */
+
+  --opacity-disabled: var(--primitive-opacity-disabled);
+  --opacity-subtle:   var(--primitive-opacity-subtle);
+  --opacity-overlay:  var(--primitive-opacity-overlay);
+
+  /* --- Z-INDEX --- */
+
+  --z-base:     var(--primitive-z-base);
+  --z-dropdown: var(--primitive-z-dropdown);
+  --z-sticky:   var(--primitive-z-sticky);
+  --z-modal:    var(--primitive-z-modal);
+  --z-toast:    var(--primitive-z-toast);
+  --z-tooltip:  var(--primitive-z-tooltip);
+
+  /* --- TRANSITION --- */
+
+  --transition-fast:  var(--primitive-transition-fast);
+  --transition-base:  var(--primitive-transition-base);
+  --transition-slow:  var(--primitive-transition-slow);
+
+  --easing-default: var(--primitive-easing-default);
+  --easing-in:      var(--primitive-easing-in);
+  --easing-out:     var(--primitive-easing-out);
+
+}
