@@ -15,6 +15,10 @@ dist-ssr
 # Claude Code local settings (personal permission grants — do not commit)
 .claude/settings.local.json
 
+# Downloaded web pages accidentally placed in public/
+public/**/*.html
+public/**/*_files/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
