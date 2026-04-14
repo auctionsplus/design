@@ -33,7 +33,7 @@ export function CommodityNav({ value, onChange, style }) {
           onClick={() => onChange?.(c.id)}
           icon={
             <img
-              src={`/icons/commodity/${c.id}.svg`}
+              src={`${import.meta.env.BASE_URL}icons/commodity/${c.id}.svg`}
               alt=""
               aria-hidden="true"
               style={{ width: 32, height: 32, display: 'block' }}

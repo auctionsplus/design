@@ -1809,8 +1809,8 @@ function TabDoc() {
                     height:               '20px',
                     flexShrink:           0,
                     backgroundColor:      'currentColor',
-                    WebkitMaskImage:      `url(/icons/commodity/${id}.svg)`,
-                    maskImage:            `url(/icons/commodity/${id}.svg)`,
+                    WebkitMaskImage:      `url(${import.meta.env.BASE_URL}icons/commodity/${id}.svg)`,
+                    maskImage:            `url(${import.meta.env.BASE_URL}icons/commodity/${id}.svg)`,
                     WebkitMaskSize:       'contain',
                     maskSize:             'contain',
                     WebkitMaskRepeat:     'no-repeat',
@@ -3314,7 +3314,7 @@ function CommodityNavDoc() {
             <LargeIconButton
               key={id}
               label={label}
-              iconSrc={`/icons/commodity/${id}.svg`}
+              iconSrc={`${import.meta.env.BASE_URL}icons/commodity/${id}.svg`}
             />
           ))}
         </div></div>
@@ -5571,18 +5571,19 @@ const ICON_GROUPS = [
   },
 ]
 
+const BASE = import.meta.env.BASE_URL
 const COMMODITY_ICONS = {
-  Cattle:    '/icons/commodity/cattle.svg',
-  Sheep:     '/icons/commodity/sheep.svg',
-  Dog:       '/icons/commodity/dog.svg',
-  Goat:      '/icons/commodity/goat.svg',
-  Alpaca:    '/icons/commodity/alpaca.svg',
-  Equine:    '/icons/commodity/equine.svg',
-  Machinery: '/icons/commodity/machinery.svg',
-  Property:  '/icons/commodity/property.svg',
-  Charity:   '/icons/commodity/charity.svg',
-  Feed:      '/icons/commodity/feed.svg',
-  Auction:   '/icons/commodity/auction.svg',
+  Cattle:    `${BASE}icons/commodity/cattle.svg`,
+  Sheep:     `${BASE}icons/commodity/sheep.svg`,
+  Dog:       `${BASE}icons/commodity/dog.svg`,
+  Goat:      `${BASE}icons/commodity/goat.svg`,
+  Alpaca:    `${BASE}icons/commodity/alpaca.svg`,
+  Equine:    `${BASE}icons/commodity/equine.svg`,
+  Machinery: `${BASE}icons/commodity/machinery.svg`,
+  Property:  `${BASE}icons/commodity/property.svg`,
+  Charity:   `${BASE}icons/commodity/charity.svg`,
+  Feed:      `${BASE}icons/commodity/feed.svg`,
+  Auction:   `${BASE}icons/commodity/auction.svg`,
 }
 
 
