@@ -1,6 +1,7 @@
 import { useState, createContext, useContext } from 'react'
 import { ToastProvider, useToast } from './components/feedback/Toast/index.js'
 import './index.css'
+import './aplus-design-system.css'
 import {
   PriceTag, AssessmentTag, AccreditationTag,
   LotStatusTag, PercentileTag, SoldStatusTag,
@@ -70,125 +71,53 @@ export default function App() {
 
 function AppShell() {
   const [activeSection, setActiveSection] = useState('home')
-  const [hoveredSection, setHoveredSection] = useState(null)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', fontFamily: 'var(--type-family-primary)', overflow: 'hidden' }}>
+    <div className="ds-shell">
 
       {/* ── TOP HEADER ── */}
-      <header style={{
-        height: '64px',
-        backgroundColor: '#011e38',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 var(--spacing-lg)',
-        flexShrink: 0,
-      }}>
-        {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-sm)' }}>
-          <img src={`${import.meta.env.BASE_URL}auctionsplus-logo.svg`} alt="AuctionsPlus" style={{ height: '22px', display: 'block' }} />
+      <header className="ds-topbar">
+        <div className="ds-topbar__logo">
+          <img src={`${import.meta.env.BASE_URL}auctionsplus-logo.svg`} alt="AuctionsPlus" />
         </div>
-
-        {/* Right */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-md)' }}>
-          <span style={{
-            fontFamily: 'var(--type-family-primary)',
-            fontSize: 'var(--type-size-body-md)',
-            lineHeight: 'var(--type-lh-body-sm)',
-            color: 'var(--color-text-grey-light)',
-          }}>
-            Design System
-          </span>
-          <span style={{ fontSize: 'var(--type-size-title-lg)', lineHeight: 'var(--type-lh-title-lg)', cursor: 'pointer', opacity: 0.7 }}>☆</span>
+        <div className="ds-topbar__right">
+          <span className="ds-topbar__title">Design System</span>
+          <span className="ds-topbar__star">☆</span>
         </div>
       </header>
 
       {/* ── BODY ── */}
-      <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+      <div className="ds-body">
 
         {/* ── SIDEBAR ── */}
-        <nav style={{
-          width: '60px',
-          backgroundColor: 'var(--color-bg-white)',
-          borderRight: 'var(--border-width-default) solid var(--color-border-grey-light)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: 'var(--spacing-md) 0',
-          flexShrink: 0,
-        }}>
-          {/* Section icons */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-sm-md)', width: '100%' }}>
-            {SECTIONS.map(({ id, label, matIcon }) => {
-              const isActive = id === activeSection
-              const isHovered = id === hoveredSection
-              return (
-                <Tooltip key={id} content={label} placement="right" style={{ left: 'calc(100% - -12px)' }}>
-                  <button
-                    onClick={() => setActiveSection(id)}
-                    onMouseEnter={() => setHoveredSection(id)}
-                    onMouseLeave={() => setHoveredSection(null)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: 'var(--spacing-sm-md)',
-                      border: 'none',
-                      borderRadius: 'var(--radius-sm)',
-                      backgroundColor: isActive || isHovered ? 'var(--color-brand-primary-light)' : 'transparent',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <span style={{
-                      fontFamily: "'Material Symbols Outlined'",
-                      fontSize: 'var(--type-size-headline-sm)',
-                      lineHeight: 1,
-                      color: isActive || isHovered ? 'var(--color-brand-primary-dark)' : 'var(--color-text-grey-dark)',
-                      userSelect: 'none',
-                      display: 'block',
-                    }}>
-                      {matIcon}
-                    </span>
-                  </button>
-                </Tooltip>
-              )
-            })}
+        <nav className="ds-sidebar">
+          <div className="ds-sidebar__nav">
+            {SECTIONS.map(({ id, label, matIcon }) => (
+              <Tooltip key={id} content={label} placement="right" style={{ left: 'calc(100% - -12px)' }}>
+                <button
+                  className={`ds-nav-icon${id === activeSection ? ' ds-nav-icon--active' : ''}`}
+                  onClick={() => setActiveSection(id)}
+                >
+                  <span className="ds-nav-icon__symbol">{matIcon}</span>
+                </button>
+              </Tooltip>
+            ))}
           </div>
-
-          {/* Version */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--spacing-xs)', borderTop: 'var(--border-width-default) solid var(--color-border-grey-light)', paddingTop: 'var(--spacing-md)', width: '100%' }}>
-            <span style={{
-              fontSize: 'var(--type-size-label-sm)',
-              lineHeight: 'var(--type-lh-label-sm)',
-              color: 'var(--color-text-grey)',
-              textAlign: 'center',
-              display: 'block',
-            }}>
-              v1
-            </span>
+          <div className="ds-sidebar__version">
+            <span>v1</span>
           </div>
         </nav>
 
         {/* ── MAIN CONTENT ── */}
-        <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', backgroundColor: 'var(--color-bg-light)' }}>
+        <main className="ds-main">
 
           {/* Page header — hidden on home */}
           {activeSection !== 'home' && (
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--spacing-xs)',
-              backgroundColor: 'var(--color-bg-white)',
-              borderBottom: 'var(--border-width-default) solid var(--color-border-grey-light)',
-              padding: 'var(--spacing-md-lg) var(--spacing-lg)',
-              flexShrink: 0,
-            }}>
-              <h1 style={{ fontSize: 'var(--type-size-headline-sm)', lineHeight: 'var(--type-lh-headline-sm)', fontWeight: 600, color: 'var(--color-bg-dark)', margin: 0 }}>
+            <div className="ds-page-header">
+              <h1 className="ds-page-header__title">
                 {SECTIONS.find(s => s.id === activeSection)?.label}
               </h1>
-              <p style={{ fontSize: 'var(--type-size-body-md)', lineHeight: 'var(--type-lh-body-sm)', color: 'var(--color-text-grey-dark)', margin: 0 }}>
+              <p className="ds-page-header__desc">
                 {activeSection === 'foundations'  && 'Our core visual language. Built for ag.'}
                 {activeSection === 'components'   && 'Reusable UI building blocks for livestock, machinery and commodity workflows.'}
                 {activeSection === 'patterns'     && 'Proven layouts and interaction patterns to support ag industry tasks.'}
@@ -199,24 +128,9 @@ function AppShell() {
 
           {/* ── Home ── */}
           {activeSection === 'home' && (
-            <div style={{
-              flex: 1,
-              overflow: 'hidden',
-              backgroundColor: 'var(--color-bg-white)',
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='1' fill='%23ECEEF0'/%3E%3C/svg%3E\")",
-              backgroundPosition: 'center center',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-            }}>
+            <div className="ds-home">
               {/* Guide lines — responsive frame, max 1024px */}
-              <div style={{
-                position: 'relative',
-                width: 'min(1024px, calc(100% - 48px))',
-                height: '512px',
-                flexShrink: 0,
-              }}>
+              <div className="ds-home__frame">
                 {/* Main content — heading area */}
                 <div style={{
                   position: 'absolute',
@@ -362,32 +276,17 @@ function AppShell() {
           )}
 
           {/* ── Foundations ── */}
-          {activeSection === 'foundations' && (
-            <div style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
-              <FoundationsSection />
-            </div>
-          )}
+          {activeSection === 'foundations' && <FoundationsSection />}
 
           {/* ── Components ── */}
-          {activeSection === 'components' && (
-            <div style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
-              <ComponentsSection />
-            </div>
-          )}
+          {activeSection === 'components' && <ComponentsSection />}
 
           {/* ── Patterns ── */}
-          {activeSection === 'patterns' && (
-            <div style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
-              <PatternsSection />
-            </div>
-          )}
+          {activeSection === 'patterns' && <PatternsSection />}
 
           {/* ── Experiences ── */}
-          {activeSection === 'experiences' && (
-            <div style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
-              <ExperiencesSection />
-            </div>
-          )}
+          {activeSection === 'experiences' && <ExperiencesSection />}
+
         </main>
       </div>
     </div>
@@ -401,49 +300,17 @@ function AppShell() {
 
 function TabNav({ tabs, active, onChange }) {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'var(--color-bg-white)',
-      borderBottom: 'var(--border-width-default) solid var(--color-border-grey-light)',
-      paddingLeft: 'var(--spacing-lg)',
-      paddingRight: 'var(--spacing-lg)',
-      flexShrink: 0,
-    }}>
-      <div style={{
-        display: 'flex',
-        gap: 'var(--spacing-md)',
-      }}>
-        {tabs.map(({ id, label }) => {
-          const isActive = id === active
-          return (
-            <button
-              key={id}
-              onClick={() => onChange(id)}
-              style={{
-                height: '60px',
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0 var(--spacing-xs)',
-                background: 'none',
-                border: 'none',
-                borderTop: isActive
-                  ? 'var(--border-width-focus) solid var(--color-brand-primary-dark)'
-                  : 'var(--border-width-focus) solid transparent',
-                marginTop: '-1px', /* sit on top of container border */
-                cursor: 'pointer',
-                fontSize: 'var(--type-size-body-md)',
-                lineHeight: 'var(--type-lh-body-sm)',
-                fontWeight: 500,
-                color: isActive ? 'var(--color-brand-primary)' : 'var(--color-text-grey)',
-                fontFamily: 'var(--type-family-primary)',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {label}
-            </button>
-          )
-        })}
+    <div className="ds-tab-bar">
+      <div className="ds-tab-bar__inner">
+        {tabs.map(({ id, label }) => (
+          <button
+            key={id}
+            onClick={() => onChange(id)}
+            className={`ds-tab-bar__tab${id === active ? ' ds-tab-bar__tab--active' : ''}`}
+          >
+            {label}
+          </button>
+        ))}
       </div>
     </div>
   )
@@ -455,15 +322,7 @@ function TabNav({ tabs, active, onChange }) {
 
 function Card({ children, style = {} }) {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: '#fff',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid var(--color-border-grey-light)',
-      padding: 'var(--spacing-lg)',
-      ...style,
-    }}>
+    <div className="ds-card" style={style}>
       {children}
     </div>
   )
@@ -471,35 +330,14 @@ function Card({ children, style = {} }) {
 
 function CardHeading({ children }) {
   return (
-    <h2 style={{
-      fontSize: 'var(--type-size-label-md)',
-      lineHeight: 'var(--type-lh-label-md)',
-      color: 'var(--color-text-grey-dark)',
-      textTransform: 'uppercase',
-      margin: '0 0 var(--spacing-md)',
-    }}>
-      {children}
-    </h2>
+    <h2 className="ds-card__heading">{children}</h2>
   )
 }
 
 function GroupHeader({ children }) {
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      padding: 'var(--spacing-sm-md) var(--spacing-lg)',
-      borderBottom: '1px solid var(--color-border-grey-light)',
-      backgroundColor: 'var(--color-bg-white)',
-    }}>
-      <span style={{
-        fontSize: 'var(--type-size-body-md)',
-        lineHeight: 'var(--type-lh-body-md)',
-        fontWeight: 600,
-        color: 'var(--color-bg-dark)',
-      }}>
-        {children}
-      </span>
+    <div className="ds-group-header">
+      <span className="ds-group-header__label">{children}</span>
     </div>
   )
 }
@@ -526,51 +364,19 @@ const FOUND_NAV = [
 function FoundationsSection() {
   const [active, setActive] = useState('colours')
   return (
-    <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-
-      {/* ── Left nav ── */}
-      <nav style={{
-        width: '200px',
-        flexShrink: 0,
-        borderRight: '1px solid var(--color-border-grey-light)',
-        backgroundColor: 'var(--color-bg-white)',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: 'var(--spacing-md) 0',
-        overflowY: 'auto',
-      }}>
-        {FOUND_NAV.map(({ id, label }) => {
-          const isActive = id === active
-          return (
-            <button
-              key={id}
-              onClick={() => setActive(id)}
-              style={{
-                display:     'flex',
-                alignItems:  'center',
-                padding:     'var(--spacing-sm) calc(var(--spacing-sm) + var(--spacing-xs))',
-                margin:      'var(--spacing-0-5) var(--spacing-sm)',
-                width:       'calc(100% - 2 * var(--spacing-sm))',
-                borderRadius: 'var(--radius-sm)',
-                background:  isActive ? 'var(--color-brand-primary-light)' : 'none',
-                border:      'none',
-                cursor:      'pointer',
-                textAlign:   'left',
-                fontFamily:  'var(--type-family-primary)',
-                fontSize:    'var(--type-size-body-sm)',
-                lineHeight:  'var(--type-lh-body-sm)',
-                fontWeight:  500,
-                color:       isActive ? 'var(--color-brand-primary-dark)' : 'var(--color-text-dark)',
-              }}
-            >
-              {label}
-            </button>
-          )
-        })}
+    <div className="ds-section-layout">
+      <nav className="ds-section-nav">
+        {FOUND_NAV.map(({ id, label }) => (
+          <button
+            key={id}
+            onClick={() => setActive(id)}
+            className={`ds-section-nav__item${id === active ? ' ds-section-nav__item--active' : ''}`}
+          >
+            {label}
+          </button>
+        ))}
       </nav>
-
-      {/* ── Content ── */}
-      <div style={{ flex: 1, overflowY: 'auto', backgroundColor: 'var(--color-bg-light)', padding: 'var(--spacing-xl)' }}>
+      <div className="ds-section-content">
         {active === 'colours'      && <ColoursPanel />}
         {active === 'typography'   && <TypographyPanel />}
         {active === 'spacing'      && <SpacingPanel />}
@@ -622,49 +428,17 @@ function ComponentsSection() {
 
   const toggleGroup = (id) => setOpenGroups(s => ({ ...s, [id]: !s[id] }))
 
-  const navItemStyle = (isActive, done = true) => ({
-    display:      'flex',
-    alignItems:   'center',
-    justifyContent: 'space-between',
-    padding:      'var(--spacing-sm) calc(var(--spacing-sm) + var(--spacing-xs))',
-    margin:       'var(--spacing-0-5) var(--spacing-sm)',
-    width:        'calc(100% - 2 * var(--spacing-sm))',
-    borderRadius: 'var(--radius-sm)',
-    background:   isActive ? 'var(--color-brand-primary-light)' : 'none',
-    border:       'none',
-    cursor:       done ? 'pointer' : 'default',
-    textAlign:    'left',
-    fontFamily:   'var(--type-family-primary)',
-    fontSize:     'var(--type-size-body-sm)',
-    lineHeight:   'var(--type-lh-body-sm)',
-    fontWeight:   500,
-    color:        isActive ? 'var(--color-brand-primary-dark)' : done ? 'var(--color-text-dark)' : 'var(--color-text-grey)',
-  })
-
   return (
-    <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-
-      {/* ── Left nav ── */}
-      <nav style={{
-        width: '200px',
-        flexShrink: 0,
-        borderRight: '1px solid var(--color-border-grey-light)',
-        backgroundColor: 'var(--color-bg-white)',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: 'var(--spacing-md) 0',
-        overflowY: 'auto',
-      }}>
+    <div className="ds-section-layout">
+      <nav className="ds-section-nav">
         {COMP_NAV.map((item) => item.children ? (
           <div key={item.id}>
-            <button onClick={() => toggleGroup(item.id)} style={navItemStyle(false)}>
+            <button
+              onClick={() => toggleGroup(item.id)}
+              className="ds-section-nav__group-toggle"
+            >
               {item.label}
-              <span style={{
-                fontFamily: "'Material Symbols Outlined'",
-                fontSize: '18px',
-                lineHeight: 1,
-                color: 'var(--color-text-grey-dark)',
-              }}>
+              <span style={{ fontFamily: "'Material Symbols Outlined'", fontSize: '18px', lineHeight: 1 }}>
                 {openGroups[item.id] ? 'expand_less' : 'expand_more'}
               </span>
             </button>
@@ -672,7 +446,8 @@ function ComponentsSection() {
               <button
                 key={id}
                 onClick={() => done && setActive(id)}
-                style={{ ...navItemStyle(id === active, done), paddingLeft: 'var(--spacing-lg)' }}
+                className={`ds-section-nav__item${id === active ? ' ds-section-nav__item--active' : ''}${!done ? ' ds-section-nav__item--disabled' : ''}`}
+                style={{ paddingLeft: 'var(--spacing-lg)' }}
               >
                 {label}
               </button>
@@ -682,29 +457,26 @@ function ComponentsSection() {
           <button
             key={item.id}
             onClick={() => item.done && setActive(item.id)}
-            style={navItemStyle(item.id === active, item.done)}
+            className={`ds-section-nav__item${item.id === active ? ' ds-section-nav__item--active' : ''}${!item.done ? ' ds-section-nav__item--disabled' : ''}`}
           >
             {item.label}
           </button>
         ))}
       </nav>
-
-      {/* ── Doc content ── */}
-      <div style={{ flex: 1, overflowY: 'auto', backgroundColor: 'var(--color-bg-light)', padding: 'var(--spacing-xl)' }}>
+      <div className="ds-section-content">
         {active === 'button'          && <ButtonDoc />}
-        {active === 'inputs-text'    && <TextInputDoc />}
-        {active === 'inputs-number'  && <NumberDoc />}
-        {active === 'inputs-dropdown'&& <DropdownDoc />}
-        {active === 'inputs-special' && <SpecialDoc />}
-        {active === 'inputs-radio'   && <RadioDoc />}
-        {active === 'inputs-checkbox'&& <CheckboxDoc />}
-        {active === 'inputs-date'    && <DatePickerDoc />}
-        {active === 'inputs-toggle'  && <ToggleDoc />}
+        {active === 'inputs-text'     && <TextInputDoc />}
+        {active === 'inputs-number'   && <NumberDoc />}
+        {active === 'inputs-dropdown' && <DropdownDoc />}
+        {active === 'inputs-special'  && <SpecialDoc />}
+        {active === 'inputs-radio'    && <RadioDoc />}
+        {active === 'inputs-checkbox' && <CheckboxDoc />}
+        {active === 'inputs-date'     && <DatePickerDoc />}
+        {active === 'inputs-toggle'   && <ToggleDoc />}
         {active === 'tab'             && <TabDoc />}
         {active === 'tags'            && <TagsDoc />}
         {active === 'image'           && <ImageDoc />}
         {active === 'avatar'          && <AvatarDoc />}
-
         {active === 'message'         && <MessageDoc />}
         {active === 'tooltip'         && <TooltipDoc />}
         {active === 'menu-item'       && <MenuItemDoc />}
@@ -782,49 +554,22 @@ const EXPERIENCES_NAV = [
 
 function ExperiencesSection() {
   const [active, setActive] = useState('exp-website')
-
-  const navItemStyle = (isActive) => ({
-    display:      'block',
-    padding:      'var(--spacing-sm) calc(var(--spacing-sm) + var(--spacing-xs))',
-    margin:       'var(--spacing-0-5) var(--spacing-sm)',
-    width:        'calc(100% - 2 * var(--spacing-sm))',
-    borderRadius: 'var(--radius-sm)',
-    background:   isActive ? 'var(--color-brand-primary-light)' : 'none',
-    border:       'none',
-    cursor:       'pointer',
-    textAlign:    'left',
-    fontFamily:   'var(--type-family-primary)',
-    fontSize:     'var(--type-size-body-sm)',
-    lineHeight:   'var(--type-lh-body-sm)',
-    fontWeight:   500,
-    color:        isActive ? 'var(--color-brand-primary-dark)' : 'var(--color-text-dark)',
-  })
-
   const activeItem = EXPERIENCES_NAV.find(n => n.id === active)
 
   return (
-    <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-
-      {/* ── Left nav ── */}
-      <nav style={{
-        width:           '200px',
-        flexShrink:      0,
-        borderRight:     '1px solid var(--color-border-grey-light)',
-        backgroundColor: 'var(--color-bg-white)',
-        display:         'flex',
-        flexDirection:   'column',
-        padding:         'var(--spacing-md) 0',
-        overflowY:       'auto',
-      }}>
+    <div className="ds-section-layout">
+      <nav className="ds-section-nav">
         {EXPERIENCES_NAV.map(({ id, label }) => (
-          <button key={id} onClick={() => setActive(id)} style={navItemStyle(id === active)}>
+          <button
+            key={id}
+            onClick={() => setActive(id)}
+            className={`ds-section-nav__item${id === active ? ' ds-section-nav__item--active' : ''}`}
+          >
             {label}
           </button>
         ))}
       </nav>
-
-      {/* ── Content ── */}
-      <div style={{ flex: 1, overflowY: 'auto', backgroundColor: 'var(--color-bg-light)', padding: 'var(--spacing-xl)' }}>
+      <div className="ds-section-content">
         <ComingSoonDoc title={activeItem?.label} />
       </div>
     </div>
@@ -837,56 +582,19 @@ function PatternsSection() {
 
   const toggleGroup = (id) => setOpenGroups(s => ({ ...s, [id]: !s[id] }))
 
-  const navItemStyle = (isActive) => ({
-    display:      'flex',
-    alignItems:   'center',
-    justifyContent: 'space-between',
-    padding:      'var(--spacing-sm) calc(var(--spacing-sm) + var(--spacing-xs))',
-    margin:       'var(--spacing-0-5) var(--spacing-sm)',
-    width:        'calc(100% - 2 * var(--spacing-sm))',
-    borderRadius: 'var(--radius-sm)',
-    background:   isActive ? 'var(--color-brand-primary-light)' : 'none',
-    border:       'none',
-    cursor:       'pointer',
-    textAlign:    'left',
-    fontFamily:   'var(--type-family-primary)',
-    fontSize:     'var(--type-size-body-sm)',
-    lineHeight:   'var(--type-lh-body-sm)',
-    fontWeight:   500,
-    color:        isActive ? 'var(--color-brand-primary-dark)' : 'var(--color-text-dark)',
-  })
-
   const activeItem = PATTERNS_NAV.flatMap(g => g.children).find(c => c.id === active)
-  const activeLabel = activeItem?.label ?? ''
-  const activeDescription = activeItem?.description
 
   return (
-    <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-
-      {/* ── Left nav ── */}
-      <nav style={{
-        width: '200px',
-        flexShrink: 0,
-        borderRight: '1px solid var(--color-border-grey-light)',
-        backgroundColor: 'var(--color-bg-white)',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: 'var(--spacing-md) 0',
-        overflowY: 'auto',
-      }}>
+    <div className="ds-section-layout">
+      <nav className="ds-section-nav">
         {PATTERNS_NAV.map(({ id, label, children }) => (
           <div key={id}>
             <button
               onClick={() => toggleGroup(id)}
-              style={navItemStyle(false)}
+              className="ds-section-nav__group-toggle"
             >
               {label}
-              <span style={{
-                fontFamily: "'Material Symbols Outlined'",
-                fontSize: '18px',
-                lineHeight: 1,
-                color: 'var(--color-text-grey-dark)',
-              }}>
+              <span style={{ fontFamily: "'Material Symbols Outlined'", fontSize: '18px', lineHeight: 1 }}>
                 {openGroups[id] ? 'expand_less' : 'expand_more'}
               </span>
             </button>
@@ -894,7 +602,8 @@ function PatternsSection() {
               <button
                 key={cId}
                 onClick={() => setActive(cId)}
-                style={{ ...navItemStyle(cId === active), paddingLeft: 'var(--spacing-lg)' }}
+                className={`ds-section-nav__item${cId === active ? ' ds-section-nav__item--active' : ''}`}
+                style={{ paddingLeft: 'var(--spacing-lg)' }}
               >
                 {cLabel}
               </button>
@@ -902,9 +611,7 @@ function PatternsSection() {
           </div>
         ))}
       </nav>
-
-      {/* ── Content ── */}
-      <div style={{ flex: 1, overflowY: 'auto', backgroundColor: 'var(--color-bg-light)', padding: 'var(--spacing-xl)' }}>
+      <div className="ds-section-content">
         {active === 'pat-header'             ? <HeaderDoc /> :
          active === 'pat-footer'             ? <FooterDoc /> :
          active === 'pat-contact-card'       ? <ContactCardDoc /> :
@@ -915,17 +622,17 @@ function PatternsSection() {
          active === 'pat-progress-indicator' ? <ProgressIndicatorDoc /> :
          active === 'pat-progress-tracker'   ? <ProgressTrackerDoc /> :
          active === 'pat-announcements'      ? <AnnouncementsDoc /> :
-         active === 'pat-toast'             ? <ToastDoc /> :
-         active === 'pat-header-content'    ? <HeaderContentDoc /> :
+         active === 'pat-toast'              ? <ToastDoc /> :
+         active === 'pat-header-content'     ? <HeaderContentDoc /> :
          active === 'pat-flyout-filter'      ? <FlyoutFilterDoc /> :
-         active === 'pat-tabbed-accordion'  ? <TabbedAccordionDoc /> :
-         active === 'pat-table'             ? <TableDoc /> :
-         active === 'pat-side-nav'          ? <SideNavDoc /> :
-         active === 'pat-tabbed-nav'        ? <TabbedNavDoc /> :
-         active === 'pat-commodity-nav'     ? <CommodityNavDoc /> :
-         active === 'pat-breadcrumbs'       ? <BreadcrumbDoc /> :
-         active === 'pat-pagination'        ? <PaginationDoc /> :
-         <ComingSoonDoc title={activeLabel} description={activeDescription} />}
+         active === 'pat-tabbed-accordion'   ? <TabbedAccordionDoc /> :
+         active === 'pat-table'              ? <TableDoc /> :
+         active === 'pat-side-nav'           ? <SideNavDoc /> :
+         active === 'pat-tabbed-nav'         ? <TabbedNavDoc /> :
+         active === 'pat-commodity-nav'      ? <CommodityNavDoc /> :
+         active === 'pat-breadcrumbs'        ? <BreadcrumbDoc /> :
+         active === 'pat-pagination'         ? <PaginationDoc /> :
+         <ComingSoonDoc title={activeItem?.label} description={activeItem?.description} />}
       </div>
     </div>
   )
@@ -1239,7 +946,7 @@ const DocPageContext = createContext('')
 function DocPage({ title, description, figmaNodeId, children }) {
   return (
     <DocPageContext.Provider value={title}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+      <div className="ds-doc-page">
         {children}
       </div>
     </DocPageContext.Provider>
@@ -1252,14 +959,14 @@ function DocSection({ title, children }) {
   const fullTitle = pageTitle ? `${pageTitle} — ${title}` : title
   const items = Array.isArray(children) ? children.filter(Boolean) : [children].filter(Boolean)
   return (
-    <Card style={{ padding: 0, overflow: 'hidden' }}>
+    <div className="ds-card" style={{ padding: 0, overflow: 'hidden' }}>
       <GroupHeader>{fullTitle}</GroupHeader>
       {items.map((child, i) => (
         <div key={i} style={{ borderTop: i > 0 ? '1px solid var(--color-border-grey-light)' : 'none' }}>
           {child}
         </div>
       ))}
-    </Card>
+    </div>
   )
 }
 
@@ -1435,17 +1142,7 @@ function tokenizeJSX(code) {
 function CodeBlock({ code }) {
   const tokens = tokenizeJSX(code)
   return (
-    <pre style={{
-      backgroundColor: 'var(--color-bg-light)',
-      borderRadius:    0,
-      padding:         'var(--spacing-md) var(--spacing-lg)',
-      overflowX:       'auto',
-      margin:          0,
-      fontFamily:      'monospace',
-      fontSize:        '13px',
-      lineHeight:      '20px',
-      whiteSpace:      'pre',
-    }}>
+    <pre className="ds-code-block" style={{ borderRadius: 0 }}>
       <code>
         {tokens.map((t, idx) => (
           <span key={idx} style={{ color: t.color }}>{t.text}</span>
@@ -3989,16 +3686,8 @@ function FlyoutFilterDoc() {
 function ComingSoonDoc({ title, description = 'This component is coming soon.' }) {
   return (
     <DocPage title={title} description={description}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '200px',
-        color: 'var(--color-text-grey)',
-        fontSize: 'var(--type-size-body-md)',
-        fontFamily: 'var(--type-family-primary)',
-      }}>
-        Coming soon
+      <div className="ds-coming-soon">
+        <span className="ds-coming-soon__label">Coming soon</span>
       </div>
     </DocPage>
   )

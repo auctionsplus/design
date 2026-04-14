@@ -1,0 +1,494 @@
+/* ============================================================
+   APLUS DESIGN SYSTEM — Documentation Site Styles
+   ds- prefix · semantic class names · CSS variables only
+   ============================================================ */
+
+/* ── Shell ─────────────────────────────────────────────────── */
+
+.ds-shell {
+  display:     flex;
+  flex-direction: column;
+  height:      100vh;
+  font-family: var(--type-family-primary);
+  overflow:    hidden;
+}
+
+/* ── Top bar ────────────────────────────────────────────────── */
+
+.ds-topbar {
+  height:           64px;
+  background-color: #011e38;
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  padding:          0 var(--spacing-lg);
+  flex-shrink:      0;
+}
+
+.ds-topbar__logo {
+  display:     flex;
+  align-items: center;
+  gap:         var(--spacing-sm);
+}
+
+.ds-topbar__logo img {
+  height:  22px;
+  display: block;
+}
+
+.ds-topbar__right {
+  display:     flex;
+  align-items: center;
+  gap:         var(--spacing-md);
+}
+
+.ds-topbar__title {
+  font-family: var(--type-family-primary);
+  font-size:   var(--type-size-body-md);
+  line-height: var(--type-lh-body-sm);
+  color:       var(--color-text-grey-light);
+}
+
+.ds-topbar__star {
+  font-size:   var(--type-size-title-lg);
+  line-height: var(--type-lh-title-lg);
+  cursor:      pointer;
+  opacity:     0.7;
+}
+
+/* ── Body ───────────────────────────────────────────────────── */
+
+.ds-body {
+  display:  flex;
+  flex:     1;
+  overflow: hidden;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────── */
+
+.ds-sidebar {
+  width:            60px;
+  background-color: var(--color-bg-white);
+  border-right:     var(--border-width-default) solid var(--color-border-grey-light);
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  justify-content:  space-between;
+  padding:          var(--spacing-md) 0;
+  flex-shrink:      0;
+}
+
+.ds-sidebar__nav {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            var(--spacing-sm-md);
+  width:          100%;
+}
+
+.ds-sidebar__version {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            var(--spacing-xs);
+  border-top:     var(--border-width-default) solid var(--color-border-grey-light);
+  padding-top:    var(--spacing-md);
+  width:          100%;
+}
+
+.ds-sidebar__version span {
+  font-size:   var(--type-size-label-sm);
+  line-height: var(--type-lh-label-sm);
+  color:       var(--color-text-grey);
+  text-align:  center;
+  display:     block;
+}
+
+/* ── Sidebar nav icon button ────────────────────────────────── */
+
+.ds-nav-icon {
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  padding:          var(--spacing-sm-md);
+  border:           none;
+  border-radius:    var(--radius-sm);
+  background-color: transparent;
+  cursor:           pointer;
+  transition:       background-color var(--transition-fast) var(--easing-default);
+}
+
+.ds-nav-icon:hover,
+.ds-nav-icon--active {
+  background-color: var(--color-brand-primary-light);
+}
+
+.ds-nav-icon .ds-nav-icon__symbol {
+  font-family:  'Material Symbols Outlined';
+  font-size:    var(--type-size-headline-sm);
+  line-height:  1;
+  color:        var(--color-text-grey-dark);
+  user-select:  none;
+  display:      block;
+  transition:   color var(--transition-fast) var(--easing-default);
+}
+
+.ds-nav-icon:hover .ds-nav-icon__symbol,
+.ds-nav-icon--active .ds-nav-icon__symbol {
+  color: var(--color-brand-primary-dark);
+}
+
+/* ── Main content ───────────────────────────────────────────── */
+
+.ds-main {
+  flex:             1;
+  display:          flex;
+  flex-direction:   column;
+  overflow:         hidden;
+  background-color: var(--color-bg-light);
+}
+
+/* ── Page header (section title bar) ────────────────────────── */
+
+.ds-page-header {
+  display:          flex;
+  flex-direction:   column;
+  gap:              var(--spacing-xs);
+  background-color: var(--color-bg-white);
+  border-bottom:    var(--border-width-default) solid var(--color-border-grey-light);
+  padding:          var(--spacing-md-lg) var(--spacing-lg);
+  flex-shrink:      0;
+}
+
+.ds-page-header__title {
+  font-size:   var(--type-size-headline-sm);
+  line-height: var(--type-lh-headline-sm);
+  font-weight: 600;
+  color:       var(--color-bg-dark);
+  margin:      0;
+}
+
+.ds-page-header__desc {
+  font-size:   var(--type-size-body-md);
+  line-height: var(--type-lh-body-sm);
+  color:       var(--color-text-grey-dark);
+  margin:      0;
+}
+
+/* ── Section layout (foundations / components / patterns) ───── */
+
+.ds-section-layout {
+  display:  flex;
+  flex:     1;
+  overflow: hidden;
+}
+
+.ds-section-nav {
+  width:            200px;
+  flex-shrink:      0;
+  border-right:     var(--border-width-default) solid var(--color-border-grey-light);
+  background-color: var(--color-bg-white);
+  display:          flex;
+  flex-direction:   column;
+  padding:          var(--spacing-md) 0;
+  overflow-y:       auto;
+}
+
+.ds-section-nav__item {
+  display:       flex;
+  align-items:   center;
+  padding:       var(--spacing-sm) calc(var(--spacing-sm) + var(--spacing-xs));
+  margin:        var(--spacing-0-5) var(--spacing-sm);
+  width:         calc(100% - 2 * var(--spacing-sm));
+  border-radius: var(--radius-sm);
+  background:    none;
+  border:        none;
+  cursor:        pointer;
+  text-align:    left;
+  font-family:   var(--type-family-primary);
+  font-size:     var(--type-size-body-sm);
+  line-height:   var(--type-lh-body-sm);
+  font-weight:   500;
+  color:         var(--color-text-dark);
+  transition:    background-color var(--transition-fast) var(--easing-default),
+                 color var(--transition-fast) var(--easing-default);
+}
+
+.ds-section-nav__item:hover {
+  background-color: var(--color-brand-primary-light);
+  color:            var(--color-brand-primary-dark);
+}
+
+.ds-section-nav__item--active {
+  background-color: var(--color-brand-primary-light);
+  color:            var(--color-brand-primary-dark);
+}
+
+.ds-section-nav__item--disabled {
+  cursor: default;
+  color:  var(--color-text-grey-light);
+}
+
+.ds-section-nav__item--disabled:hover {
+  background-color: transparent;
+  color:            var(--color-text-grey-light);
+}
+
+.ds-section-nav__group-label {
+  font-size:     var(--type-size-label-md);
+  line-height:   var(--type-lh-label-md);
+  font-weight:   600;
+  color:         var(--color-text-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding:       var(--spacing-md) var(--spacing-md) var(--spacing-xs);
+  display:       block;
+}
+
+.ds-section-nav__group-toggle {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         var(--spacing-sm) calc(var(--spacing-sm) + var(--spacing-xs));
+  margin:          var(--spacing-0-5) var(--spacing-sm);
+  width:           calc(100% - 2 * var(--spacing-sm));
+  border-radius:   var(--radius-sm);
+  background:      none;
+  border:          none;
+  cursor:          pointer;
+  font-family:     var(--type-family-primary);
+  font-size:       var(--type-size-body-sm);
+  line-height:     var(--type-lh-body-sm);
+  font-weight:     600;
+  color:           var(--color-text-dark);
+}
+
+.ds-section-content {
+  flex:             1;
+  overflow-y:       auto;
+  background-color: var(--color-bg-light);
+  padding:          var(--spacing-xl);
+}
+
+/* ── Tab bar ────────────────────────────────────────────────── */
+
+.ds-tab-bar {
+  display:          flex;
+  flex-direction:   column;
+  background-color: var(--color-bg-white);
+  border-bottom:    var(--border-width-default) solid var(--color-border-grey-light);
+  padding:          0 var(--spacing-lg);
+  flex-shrink:      0;
+}
+
+.ds-tab-bar__inner {
+  display: flex;
+  gap:     var(--spacing-md);
+}
+
+.ds-tab-bar__tab {
+  height:      60px;
+  display:     flex;
+  align-items: center;
+  padding:     0 var(--spacing-xs);
+  background:  none;
+  border:      none;
+  border-top:  var(--border-width-focus) solid transparent;
+  margin-top:  -1px;
+  cursor:      pointer;
+  font-size:   var(--type-size-body-md);
+  line-height: var(--type-lh-body-sm);
+  font-weight: 500;
+  color:       var(--color-text-grey);
+  font-family: var(--type-family-primary);
+  white-space: nowrap;
+  transition:  color var(--transition-fast) var(--easing-default);
+}
+
+.ds-tab-bar__tab:hover {
+  color: var(--color-brand-primary);
+}
+
+.ds-tab-bar__tab--active {
+  border-top-color: var(--color-brand-primary-dark);
+  color:            var(--color-brand-primary);
+}
+
+/* ── Doc page ───────────────────────────────────────────────── */
+
+.ds-doc-page {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--spacing-xl);
+  max-width:      900px;
+}
+
+.ds-doc-page__header {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--spacing-xs);
+  padding-bottom: var(--spacing-md);
+  border-bottom:  var(--border-width-default) solid var(--color-border-grey-light);
+}
+
+.ds-doc-page__title {
+  font-size:   var(--type-size-headline-sm);
+  line-height: var(--type-lh-headline-sm);
+  font-weight: 600;
+  color:       var(--color-text-dark);
+  margin:      0;
+}
+
+.ds-doc-page__desc {
+  font-size:   var(--type-size-body-md);
+  line-height: var(--type-lh-body-md);
+  color:       var(--color-text-grey-dark);
+  margin:      0;
+}
+
+.ds-doc-page__figma {
+  display:     inline-flex;
+  align-items: center;
+  gap:         var(--spacing-xs);
+  font-size:   var(--type-size-body-sm);
+  color:       var(--color-text-brand-primary);
+  margin-top:  var(--spacing-xs);
+}
+
+/* ── Doc section ────────────────────────────────────────────── */
+
+.ds-doc-section {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--spacing-md);
+}
+
+.ds-doc-section__title {
+  font-size:      var(--type-size-body-sm);
+  line-height:    var(--type-lh-body-sm);
+  font-weight:    600;
+  color:          var(--color-text-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin:         0;
+}
+
+/* ── Showcase (component demo area) ─────────────────────────── */
+
+.ds-showcase {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--spacing-sm);
+  align-items: center;
+}
+
+.ds-showcase--stack {
+  flex-direction: column;
+  align-items:    flex-start;
+}
+
+.ds-showcase--grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap:                   var(--spacing-md);
+}
+
+.ds-showcase--fill > * {
+  flex: 1;
+}
+
+/* ── Code block ─────────────────────────────────────────────── */
+
+.ds-code-block {
+  background-color: var(--color-bg-dark);
+  border-radius:    var(--radius-md);
+  padding:          var(--spacing-md);
+  overflow-x:       auto;
+}
+
+.ds-code-block pre {
+  margin:      0;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size:   var(--type-size-body-sm);
+  line-height: var(--type-lh-body-sm);
+  color:       var(--color-text-grey-light);
+  white-space: pre;
+}
+
+/* ── Card ───────────────────────────────────────────────────── */
+
+.ds-card {
+  display:          flex;
+  flex-direction:   column;
+  background-color: var(--color-bg-white);
+  border-radius:    var(--radius-lg);
+  border:           var(--border-width-default) solid var(--color-border-grey-light);
+  padding:          var(--spacing-lg);
+}
+
+.ds-card__heading {
+  font-size:      var(--type-size-label-md);
+  line-height:    var(--type-lh-label-md);
+  color:          var(--color-text-grey-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin:         0 0 var(--spacing-md);
+}
+
+/* ── Group header ───────────────────────────────────────────── */
+
+.ds-group-header {
+  display:          flex;
+  align-items:      center;
+  padding:          var(--spacing-sm-md) var(--spacing-lg);
+  border-bottom:    var(--border-width-default) solid var(--color-border-grey-light);
+  background-color: var(--color-bg-white);
+}
+
+.ds-group-header__label {
+  font-size:   var(--type-size-body-md);
+  line-height: var(--type-lh-body-md);
+  font-weight: 600;
+  color:       var(--color-bg-dark);
+}
+
+/* ── Home page ──────────────────────────────────────────────── */
+
+.ds-home {
+  flex:                 1;
+  overflow:             hidden;
+  background-color:     var(--color-bg-white);
+  background-image:     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='1' fill='%23ECEEF0'/%3E%3C/svg%3E");
+  background-position:  center center;
+  display:              flex;
+  align-items:          center;
+  justify-content:      center;
+  position:             relative;
+}
+
+.ds-home__frame {
+  position:   relative;
+  width:      min(1024px, calc(100% - 48px));
+  height:     512px;
+  flex-shrink: 0;
+}
+
+/* ── Coming soon ────────────────────────────────────────────── */
+
+.ds-coming-soon {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--spacing-sm);
+  padding:         var(--spacing-3xl);
+  color:           var(--color-text-grey);
+  text-align:      center;
+}
+
+.ds-coming-soon__label {
+  font-size:   var(--type-size-body-sm);
+  line-height: var(--type-lh-body-sm);
+  font-weight: 500;
+  color:       var(--color-text-grey);
+}
