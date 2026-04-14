@@ -87,7 +87,7 @@ function AppShell() {
       }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-sm)' }}>
-          <img src="/auctionsplus-logo.svg" alt="AuctionsPlus" style={{ height: '22px', display: 'block' }} />
+          <img src={`${import.meta.env.BASE_URL}auctionsplus-logo.svg`} alt="AuctionsPlus" style={{ height: '22px', display: 'block' }} />
         </div>
 
         {/* Right */}
