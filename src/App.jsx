@@ -4997,7 +4997,7 @@ function IconTile({ name, kind, weight }) {
         }}>
           <CommodityIcon id={name} />
         </div>
-        <span style={{ fontSize: 'var(--type-size-body-md)', lineHeight: 'var(--type-lh-body-sm)', color: 'var(--color-text-dark)', fontFamily: 'var(--type-family-primary)', fontWeight: 400, wordBreak: 'break-all' }}>
+        <span className="ds-demo-group__label" style={{ fontSize: 'var(--type-size-body-md)', lineHeight: 'var(--type-lh-body-sm)', color: 'var(--color-text-dark)', fontFamily: 'var(--type-family-primary)', fontWeight: 400, wordBreak: 'break-all' }}>
           {name}
         </span>
       </div>
@@ -5037,7 +5037,7 @@ function IconTile({ name, kind, weight }) {
       )}
       <IconButton icon={baseName} size="md" variant="outlined" aria-label={baseName} />
       <span className="ds-token-raw">{weight}</span>
-      <span style={{ fontSize: 'var(--type-size-body-md)', color: 'var(--color-text-dark)', fontFamily: 'var(--type-family-primary)', fontWeight: 400, wordBreak: 'break-all' }}>
+      <span className="ds-demo-group__label" style={{ fontSize: 'var(--type-size-body-md)', color: 'var(--color-text-dark)', fontFamily: 'var(--type-family-primary)', fontWeight: 400, wordBreak: 'break-all' }}>
         {name}
       </span>
     </div>
