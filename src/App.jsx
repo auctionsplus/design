@@ -552,7 +552,7 @@ function HeaderDoc() {
       description="Global navigation bar with logo, search, nav links, and user controls."
       figmaNodeId="2286:14218"
     >
-      <DocSection title="Website Header">
+      <DocSection title="Header - Website Header">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)', padding: 'var(--spacing-lg)' }}>
           <Toggle
             label="Mobile view"
@@ -579,7 +579,7 @@ function FooterDoc() {
       description="Site-wide footer with nav links, app badges, and social icons."
       figmaNodeId="2286:14270"
     >
-      <DocSection title="Interactive">
+      <DocSection title="Footer - Interactive">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)', padding: 'var(--spacing-lg)' }}>
           <Toggle
             label="Mobile view"
@@ -608,7 +608,7 @@ function ContactCardDoc() {
       title="Contact Card"
       description="Agent card with name, role, contact actions, and agency branding."
     >
-      <DocSection title="Contact Card">
+      <DocSection title="Contact Card - Default">
         <Demo style={{ padding: 'var(--spacing-lg)', background: 'var(--color-bg-light)' }}>
           <AgentContactCard
               agentName="Tim Smith"
@@ -631,19 +631,19 @@ function AdvertisingCardDoc() {
       title="Advertising Card"
       description="Promotional card for featured listings and sponsored content."
     >
-      <DocSection title="Horizontal Ad — 16/3">
+      <DocSection title="Advertising Card - Horizontal Ad 16/3">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <p style={{ fontFamily: 'var(--type-family-primary)', fontSize: 'var(--type-size-body-sm)', color: 'var(--color-text-grey-dark)' }}>Coming soon</p>
         </Demo>
       </DocSection>
 
-      <DocSection title="Vertical Ad — 16/3">
+      <DocSection title="Advertising Card - Vertical Ad 16/3">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <p style={{ fontFamily: 'var(--type-family-primary)', fontSize: 'var(--type-size-body-sm)', color: 'var(--color-text-grey-dark)' }}>Coming soon</p>
         </Demo>
       </DocSection>
 
-      <DocSection title="Ad — 1/1">
+      <DocSection title="Advertising Card - Ad  1/1">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <p style={{ fontFamily: 'var(--type-family-primary)', fontSize: 'var(--type-size-body-sm)', color: 'var(--color-text-grey-dark)' }}>Coming soon</p>
         </Demo>
@@ -756,7 +756,7 @@ function AuctionCardDoc() {
       title="Auction Card"
       description="Auction event card with key details, status, and entry info."
     >
-      <DocSection title="Row">
+      <DocSection title="Auction Card - Horizontal">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <AuctionCardRow
             commodity="cattle"
@@ -783,7 +783,7 @@ function LotCardDoc() {
       description="Auction lot card with photo, specs, EBV indices, tags, and agency footer."
       figmaNodeId="2199:24939"
     >
-      <DocSection title="Full card — with ABVs">
+      <DocSection title="Lot Card - Sheep Genetics">
         <Demo style={{ backgroundColor: 'var(--color-bg-light)' }}>
           <DemoGroup column>
             <LotCard
@@ -817,7 +817,7 @@ function LotCardDoc() {
         <CodeBlock code={`<LotCard\n  images={[img1, img2]}\n  location="Elmore, VIC"\n  title="Lot 12 - Pepperton Tag 512"\n  breeder="Pepperton Poll Dorsets"\n  specs={[\n    { key: 'Breed', value: 'Poll Dorset' },\n    { key: 'Type',  value: 'Ram' },\n  ]}\n  abvs={[\n    { key: 'WWT', value: '13.80', percentile: 5 },\n  ]}\n  tags={['$/Head', 'Assessed']}\n  agencyName="Elders Bendigo"\n/>`} />
       </DocSection>
 
-      <DocSection title="Minimal — no ABVs">
+      <DocSection title="Lot Card - Standard">
         <Demo style={{ backgroundColor: 'var(--color-bg-light)' }}>
           <DemoGroup column>
             <LotCard
@@ -858,12 +858,10 @@ function DocPage({ title, description, figmaNodeId, children }) {
 
 /* Each child of DocSection is rendered as a row separated by a border-top */
 function DocSection({ title, children }) {
-  const pageTitle = useContext(DocPageContext)
-  const fullTitle = pageTitle ? `${pageTitle} — ${title}` : title
   const items = Array.isArray(children) ? children.filter(Boolean) : [children].filter(Boolean)
   return (
     <div className="ds-card" style={{ padding: 0, overflow: 'hidden' }}>
-      <GroupHeader>{fullTitle}</GroupHeader>
+      <GroupHeader>{title}</GroupHeader>
       {items.map((child, i) => (
         <div key={i} style={{ borderTop: i > 0 ? '1px solid var(--color-border-grey-light)' : 'none' }}>
           {child}
@@ -1105,7 +1103,7 @@ function BreadcrumbDoc() {
       description="Shows the user's current location within the site hierarchy."
       figmaNodeId="2289:14896"
     >
-      <DocSection title="Example">
+      <DocSection title="Breadcrumbs - Example">
         <Demo>
           <DemoGroup column>
             <Breadcrumb items={[
@@ -1120,7 +1118,7 @@ function BreadcrumbDoc() {
         <CodeBlock code={`<Breadcrumb items={[\n  { label: 'Home',     href: '/' },\n  { label: 'Auctions', href: '/auctions' },\n  { label: 'Cattle',   href: '/auctions/cattle' },\n  { label: 'Eastern States Cattle Sale' },\n]} />`} />
       </DocSection>
 
-      <DocSection title="Short trail">
+      <DocSection title="Breadcrumbs - Short trail">
         <Demo>
           <DemoGroup>
             <Breadcrumb items={[
@@ -1148,7 +1146,7 @@ function PaginationDoc() {
       title="Pagination"
       description="Page navigation for large data sets. Collapses to ellipsis automatically."
     >
-      <DocSection title="Few pages">
+      <DocSection title="Pagination - Few pages">
         <Demo>
           <DemoGroup column>
             <Pagination page={page3} total={5} onChange={setPage3} />
@@ -1157,7 +1155,7 @@ function PaginationDoc() {
         <CodeBlock code={`const [page, setPage] = useState(1)\n\n<Pagination page={page} total={5} onChange={setPage} />`} />
       </DocSection>
 
-      <DocSection title="Many pages — start">
+      <DocSection title="Pagination - Many pages – start">
         <Demo>
           <DemoGroup column>
             <Pagination page={page1} total={24} onChange={setPage1} />
@@ -1166,7 +1164,7 @@ function PaginationDoc() {
         <CodeBlock code={`<Pagination page={page} total={24} onChange={setPage} />`} />
       </DocSection>
 
-      <DocSection title="Many pages — middle">
+      <DocSection title="Pagination - Many pages – middle">
         <Demo>
           <DemoGroup column>
             <Pagination page={page2} total={24} onChange={setPage2} />
@@ -1186,7 +1184,7 @@ function ImageDoc() {
       title="Image"
       description="Responsive image with aspect ratio lock, skeleton loader, and broken-image fallback."
     >
-      <DocSection title="Aspect ratios">
+      <DocSection title="Image - Aspect ratios">
         <Demo>
           <DemoGroup label="3/2 — lot cards (default)" column>
             <Image src="https://images.unsplash.com/photo-1500595046743-cd271d694e30?w=600" alt="Cattle" aspectRatio="3/2" style={{ width: '240px' }} />
@@ -1201,7 +1199,7 @@ function ImageDoc() {
         <CodeBlock code={`<Image src={url} alt="Cattle" aspectRatio="3/2" />\n<Image src={url} alt="Cattle" aspectRatio="16/9" />\n<Image src={url} alt="Cattle" aspectRatio="1/1" />`} />
       </DocSection>
 
-      <DocSection title="Border radius">
+      <DocSection title="Image - Border radius">
         <Demo>
           <DemoGroup label="none (default)" column>
             <Image src="https://images.unsplash.com/photo-1500595046743-cd271d694e30?w=600" alt="Cattle" aspectRatio="3/2" radius="none" style={{ width: '180px' }} />
@@ -1219,7 +1217,7 @@ function ImageDoc() {
         <CodeBlock code={`<Image src={url} alt="Cattle" radius="md" />\n<Image src={url} alt="Cattle" radius="lg" />\n<Image src={url} alt="Cattle" aspectRatio="1/1" radius="full" />`} />
       </DocSection>
 
-      <DocSection title="Loading & fallback states">
+      <DocSection title="Image - Loading & fallback states">
         <Demo>
           <DemoGroup label="Loading skeleton (no src)" column>
             <Image aspectRatio="3/2" style={{ width: '240px' }} />
@@ -1242,7 +1240,7 @@ function EmptyStateDoc() {
       title="Empty State"
       description="Shown when no data is available. Guides the user to a next action."
     >
-      <DocSection title="With action">
+      <DocSection title="Empty State - With action">
         <Demo>
           <DemoGroup column>
             <EmptyState
@@ -1256,7 +1254,7 @@ function EmptyStateDoc() {
         <CodeBlock code={`<EmptyState\n  icon="search_off"\n  title="No results found"\n  message="Try adjusting your filters or search terms."\n  action={{ label: 'Clear filters', onClick: handleClear }}\n/>`} />
       </DocSection>
 
-      <DocSection title="Without action">
+      <DocSection title="Empty State - Without action">
         <Demo>
           <DemoGroup column>
             <EmptyState
@@ -1269,34 +1267,6 @@ function EmptyStateDoc() {
         <CodeBlock code={`<EmptyState\n  icon="inbox"\n  title="No lots yet"\n  message="Browse auctions to get started."\n/>`} />
       </DocSection>
 
-      <DocSection title="Variants">
-        <Demo>
-          <DemoGroup label="Watchlist" column>
-            <EmptyState
-              icon="favorite_border"
-              title="Your watchlist is empty"
-              message="Save lots you're interested in to keep track of them here."
-              action={{ label: 'Browse auctions', onClick: () => {} }}
-            />
-          </DemoGroup>
-          <DemoGroup label="No connection" column>
-            <EmptyState
-              icon="cloud_off"
-              title="Unable to load"
-              message="Check your connection and try again."
-              action={{ label: 'Retry', onClick: () => {} }}
-            />
-          </DemoGroup>
-          <DemoGroup label="No bids" column>
-            <EmptyState
-              icon="gavel"
-              title="No bids placed"
-              message="You haven't placed any bids yet."
-            />
-          </DemoGroup>
-        </Demo>
-        <CodeBlock code={`<EmptyState icon="favorite_border" title="Your watchlist is empty" message="..." action={{ label: 'Browse auctions', onClick: fn }} />\n<EmptyState icon="cloud_off" title="Unable to load" message="..." action={{ label: 'Retry', onClick: fn }} />`} />
-      </DocSection>
     </DocPage>
   )
 }
@@ -1307,7 +1277,7 @@ function AvatarDoc() {
       title="Avatar"
       description="Circular avatar with optional verified badge and icon fallback."
     >
-      <DocSection title="With image">
+      <DocSection title="Avatar - With image">
         <Demo>
           <DemoGroup label="Default (40px)">
             <Avatar src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Farmer" />
@@ -1325,7 +1295,7 @@ function AvatarDoc() {
         <CodeBlock code={`<Avatar src={url} alt="User" />\n<Avatar src={url} alt="User" verified />\n<Avatar src={url} alt="User" size={56} />`} />
       </DocSection>
 
-      <DocSection title="Fallback (no src)">
+      <DocSection title="Avatar - Fallback (no src)">
         <Demo>
           <DemoGroup label="Default (40px)">
             <Avatar alt="User" />
@@ -1356,7 +1326,7 @@ function TabDoc() {
       description="Tab strip for switching between related content sections."
       figmaNodeId="Components · 17:5098"
     >
-      <DocSection title="Tabbed variants">
+      <DocSection title="Tab - variants">
         <Demo>
           <DemoGroup label="Text tabs" column>
             <TabBar
@@ -1423,7 +1393,7 @@ function TagsDoc() {
       figmaNodeId="Components · 4:3877"
     >
 
-      <DocSection title="Price type">
+      <DocSection title="Tags & Badges - Price type">
         <Demo>
           <DemoGroup label="Variants">
             <PriceTag label="$/Head" />
@@ -1436,7 +1406,7 @@ function TagsDoc() {
         <CodeBlock code={`<PriceTag label="$/Head" />\n<PriceTag label="$/Lot" />\n<PriceTag label="c/kg L" />`} />
       </DocSection>
 
-      <DocSection title="Assessment type">
+      <DocSection title="Tags & Badges - Assessment type">
         <Demo>
           <DemoGroup label="Variants">
             <AssessmentTag label="Assessed" />
@@ -1446,7 +1416,7 @@ function TagsDoc() {
         <CodeBlock code={`<AssessmentTag label="Assessed" />\n<AssessmentTag label="Described" />`} />
       </DocSection>
 
-      <DocSection title="Accreditation">
+      <DocSection title="Tags & Badges - Accreditation">
         <Demo>
           <DemoGroup label="Livestock">
             <AccreditationTag label="EU" />
@@ -1460,7 +1430,7 @@ function TagsDoc() {
         <CodeBlock code={`<AccreditationTag label="EU" />\n<AccreditationTag label="PCAS Cert" />\n<AccreditationTag label="WHP/ESI" />\n<FeederOptimisedTag />`} />
       </DocSection>
 
-      <DocSection title="Lot status">
+      <DocSection title="Tags & Badges - Lot status">
         <Demo>
           <DemoGroup label="Variants">
             <LotStatusTag variant="published" />
@@ -1472,7 +1442,7 @@ function TagsDoc() {
         <CodeBlock code={`<LotStatusTag variant="published" />\n<LotStatusTag variant="in-progress" />\n<LotStatusTag variant="live" />\n<LotStatusTag variant="stud-verified" />`} />
       </DocSection>
 
-      <DocSection title="Percentile">
+      <DocSection title="Tags & Badges - Percentile">
         <Demo>
           <DemoGroup label="Small (default)">
             <PercentileTag percentile={5}  size="sm" />
@@ -1490,7 +1460,7 @@ function TagsDoc() {
         <CodeBlock code={`<PercentileTag percentile={5} />\n<PercentileTag percentile={10} size="md" />`} />
       </DocSection>
 
-      <DocSection title="Bid status">
+      <DocSection title="Tags & Badges - Bid status">
         <Demo>
           <DemoGroup label="Variants">
             <SoldStatusTag variant="sold" />
@@ -1502,7 +1472,7 @@ function TagsDoc() {
         <CodeBlock code={`<SoldStatusTag variant="sold" />\n<SoldStatusTag variant="passed-in" />\n<SoldStatusTag variant="withdrawn" />\n<SoldStatusTag variant="no-bids" />`} />
       </DocSection>
 
-      <DocSection title="New / beta">
+      <DocSection title="Tags & Badges - New / beta">
         <Demo>
           <DemoGroup label="Variants">
             <NewTag variant="new" />
@@ -1512,7 +1482,7 @@ function TagsDoc() {
         <CodeBlock code={`<NewTag variant="new" />\n<NewTag variant="beta" />`} />
       </DocSection>
 
-      <DocSection title="Card key">
+      <DocSection title="Tags & Badges - Card key">
         <Demo>
           <DemoGroup label="Variants" column>
             <CardKeyInfoTag variant="buy-now"    label="Buy Now for $1,150.00/Head" />
@@ -1524,7 +1494,7 @@ function TagsDoc() {
         <CodeBlock code={`<CardKeyInfoTag variant="buy-now" label="Buy Now for $1,150.00/Head" />\n<CardKeyInfoTag variant="make-offer" />\n<CardKeyInfoTag variant="reoffered" label="Reoffered in 776 — Weaner Sale" />\n<CardKeyInfoTag variant="withdrawn" label="Lot has been withdrawn" />`} />
       </DocSection>
 
-      <DocSection title="Auction type">
+      <DocSection title="Tags & Badges - Auction type">
         <Demo>
           <DemoGroup label="Variants">
             <AuctionTypeTag variant="stud" />
@@ -1538,7 +1508,7 @@ function TagsDoc() {
         <CodeBlock code={`<AuctionTypeTag variant="stud" />\n<AuctionTypeTag variant="commercial" />\n<AuctionTypeTag variant="machinery" />\n<AuctionTypeTag variant="property" />\n<AuctionTypeTag variant="special-commercial" />\n<AuctionTypeTag variant="charity" />`} />
       </DocSection>
 
-      <DocSection title="Package type">
+      <DocSection title="Tags & Badges - Package type">
         <Demo>
           <DemoGroup label="Variants">
             <PackageTypeTag variant="premium" />
@@ -1552,7 +1522,7 @@ function TagsDoc() {
       </DocSection>
 
 
-      <DocSection title="Listing status">
+      <DocSection title="Tags & Badges - Listing status">
         <Demo>
           <DemoGroup label="Variants">
             <ListingStatusTag variant="published" />
@@ -1564,7 +1534,7 @@ function TagsDoc() {
         <CodeBlock code={`<ListingStatusTag variant="published" />\n<ListingStatusTag variant="draft" />\n<ListingStatusTag variant="unpublished" />\n<ListingStatusTag variant="withdrawn" />`} />
       </DocSection>
 
-      <DocSection title="Badge">
+      <DocSection title="Tags & Badges - Badge">
         <Demo>
           <DemoGroup label="Blue (default)">
             <Badge count={1} variant="blue" />
@@ -1595,7 +1565,7 @@ function TagsDoc() {
         <CodeBlock code={`<Badge count={1} variant="blue" />\n<Badge count={10} variant="red" />\n<Badge count={100} variant="yellow" />\n<Badge count={1} variant="grey" />\n<Badge count={100} />  {/* renders "99+" */}`} />
       </DocSection>
 
-      <DocSection title="Chip">
+      <DocSection title="Tags & Badges - Chip">
         <Demo>
           <DemoGroup label="With remove handler">
             <Chip label="Dubbo" onRemove={() => {}} />
@@ -1858,7 +1828,7 @@ function ButtonDoc() {
       figmaNodeId="Components · 5:3906"
     >
 
-      <DocSection title="Button variants">
+      <DocSection title="Button - Variants">
         <Demo>
           <DemoGroup label="Medium — enabled">
             <Button variant="primary">Primary</Button>
@@ -1886,7 +1856,7 @@ function ButtonDoc() {
         <CodeBlock code={`<Button variant="primary">Label</Button>\n<Button variant="primary" size="sm">Label</Button>`} />
       </DocSection>
 
-      <DocSection title="Button with icons">
+      <DocSection title="Button - With Icons - variants">
         <Demo>
           <DemoGroup label="Leading icon">
             <Button variant="primary" leadingIcon="add">Create Lot</Button>
@@ -1907,7 +1877,7 @@ function ButtonDoc() {
         <CodeBlock code={`// leadingIcon / trailingIcon accept any Material Symbol name\n<Button variant="primary" leadingIcon="add">Create Lot</Button>\n<Button variant="secondary" trailingIcon="keyboard_arrow_down">Sort</Button>\n\n// Icon only — square button\n<Button variant="primary" leadingIcon="add" style={{ width: 'var(--size-btn-md)', padding: 0 }} />`} />
       </DocSection>
 
-      <DocSection title="Icon button variants">
+      <DocSection title="Icon Button - Variants">
         <Demo>
           <DemoGroup label="Large — default" gap="var(--spacing-md)">
             {[['Cattle', 'Cattle'], ['Sheep', 'Sheep']].map(([commodity, label]) => (
@@ -1933,7 +1903,7 @@ function ButtonDoc() {
         <CodeBlock code={`<button style={{ width: '44px', height: '44px', borderRadius: 'var(--radius-sm)', backgroundColor: 'transparent' }}>\n  <span style={{ fontFamily: "'Material Symbols Rounded'", color: 'var(--color-text-grey-dark)' }}>tune</span>\n</button>`} />
       </DocSection>
 
-      <DocSection title="Select button variants">
+      <DocSection title="Button - Select - States">
         <Demo>
           <DemoGroup label="Interactive">
             <SelectGroup options={['Sheep', 'Cattle', 'Machinery']} initial={['Sheep']} />
@@ -1946,7 +1916,7 @@ function ButtonDoc() {
         <CodeBlock code={`<button style={{\n  height: 'var(--size-btn-md)',\n  padding: '0 var(--spacing-md)',\n  borderRadius: 'var(--radius-full)',\n  border: '1px solid var(--color-border-grey)',\n  backgroundColor: 'var(--color-bg-white)',\n  color: 'var(--color-text-grey-dark)',\n  fontSize: 'var(--type-size-body-md)',\n  fontWeight: 400,\n}}>Yes</button>`} />
       </DocSection>
 
-      <DocSection title="Radio select button variants">
+      <DocSection title="Button - Radio - States">
         <Demo>
           <DemoGroup label="Interactive">
             <RadioSelectGroup options={['Sheep', 'Cattle', 'Machinery']} initial="Sheep" />
@@ -1959,7 +1929,7 @@ function ButtonDoc() {
         <CodeBlock code={`<button style={{\n  height: 'var(--size-btn-md)',\n  padding: '0 var(--spacing-md)',\n  borderRadius: 'var(--radius-full)',\n  border: '1px solid var(--color-border-grey)',\n  backgroundColor: 'var(--color-bg-white)',\n  color: 'var(--color-text-grey-dark)',\n  fontSize: 'var(--type-size-body-md)',\n  fontWeight: 400,\n}}>Sheep</button>`} />
       </DocSection>
 
-      <DocSection title="Split select button variants">
+      <DocSection title="Button - Split select - variants">
         <Demo>
           <DemoGroup label="2 split">
             <SplitSelectGroup options={['Sheep', 'Cattle']} initial="Sheep" />
@@ -1973,7 +1943,7 @@ function ButtonDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Text button variants">
+      <DocSection title="Button - Text - variants">
         <Demo>
           <DemoGroup label="Link" gap="var(--spacing-lg)">
             <Button variant="text">View today's auctions</Button>
@@ -2003,7 +1973,7 @@ function TextInputDoc() {
       description="Text input variants for user data entry."
       figmaNodeId="Components · 170:860"
     >
-      <DocSection title="Text field">
+      <DocSection title="Text Input - Text">
         <Demo>
           <DemoGroup>
             <Input label="Default" placeholder="Placeholder text" style={{ width: '280px' }} />
@@ -2018,7 +1988,7 @@ function TextInputDoc() {
         <CodeBlock code={`<Input label="Label" placeholder="Enter value" />\n<Input label="Label" state="error" hint="This field is required" />\n<Input label="Label" state="disabled" />`} />
       </DocSection>
 
-      <DocSection title="Password field">
+      <DocSection title="Text Input - Password">
         <Demo>
           <DemoGroup>
             <PasswordInput label="Password" style={{ width: '280px' }} />
@@ -2033,7 +2003,7 @@ function TextInputDoc() {
         <CodeBlock code={`<PasswordInput label="Password" />\n<PasswordInput label="Password" state="error" hint="Password must be at least 8 characters" />\n<PasswordInput label="Password" state="disabled" />`} />
       </DocSection>
 
-      <DocSection title="Email field">
+      <DocSection title="Text Input - Email">
         <Demo>
           <DemoGroup>
             <EmailInput label="Email address" style={{ width: '280px' }} />
@@ -2048,7 +2018,7 @@ function TextInputDoc() {
         <CodeBlock code={`<EmailInput label="Email address" />\n<EmailInput label="Email address" state="error" hint="Please enter a valid email address" />\n<EmailInput label="Email address" state="disabled" />`} />
       </DocSection>
 
-      <DocSection title="URL field">
+      <DocSection title="Text Input - URL">
         <Demo>
           <DemoGroup>
             <UrlInput label="Website" style={{ width: '280px' }} />
@@ -2063,7 +2033,7 @@ function TextInputDoc() {
         <CodeBlock code={`<UrlInput label="Website" />\n<UrlInput label="Website" state="error" hint="Please enter a valid URL" />\n<UrlInput label="Website" state="disabled" />`} />
       </DocSection>
 
-      <DocSection title="Telephone field">
+      <DocSection title="Text Input - Telephone">
         <Demo>
           <DemoGroup>
             <TelInput label="Phone number" style={{ width: '280px' }} />
@@ -2078,7 +2048,7 @@ function TextInputDoc() {
         <CodeBlock code={`<TelInput label="Phone number" />\n<TelInput label="Phone number" state="error" hint="Please enter a valid phone number" />\n<TelInput label="Phone number" state="disabled" />`} />
       </DocSection>
 
-      <DocSection title="Small text field">
+      <DocSection title="Text Input - Text - Small">
         <Demo>
           <DemoGroup>
             <Input label="Default" placeholder="Placeholder text" size="sm" style={{ width: '220px' }} />
@@ -2093,7 +2063,7 @@ function TextInputDoc() {
         <CodeBlock code={`<Input label="Label" size="sm" placeholder="Enter value" />`} />
       </DocSection>
 
-      <DocSection title="Text area">
+      <DocSection title="Text Input - Text area">
         <Demo>
           <DemoGroup>
             <TextArea label="Description" placeholder="Enter a description…" style={{ width: '280px' }} />
@@ -2118,7 +2088,7 @@ function NumberDoc() {
       description="Numeric input variants for data entry."
       figmaNodeId="Components · 170:864"
     >
-      <DocSection title="Number field">
+      <DocSection title="Number Input - Number">
         <Demo>
           <DemoGroup>
             <NumberInput label="Default" placeholder="0" style={{ width: '280px' }} />
@@ -2133,7 +2103,7 @@ function NumberDoc() {
         <CodeBlock code={`<NumberInput label="Quantity" placeholder="0" />\n<NumberInput label="Quantity" state="error" hint="Must be a valid number" />\n<NumberInput label="Quantity" state="disabled" />`} />
       </DocSection>
 
-      <DocSection title="Small number field">
+      <DocSection title="Number Input - Number - Small">
         <Demo>
           <DemoGroup>
             <NumberInput label="Default" placeholder="0" size="sm" style={{ width: '160px' }} />
@@ -2148,7 +2118,7 @@ function NumberDoc() {
         <CodeBlock code={`<NumberInput label="Quantity" size="sm" placeholder="0" />`} />
       </DocSection>
 
-      <DocSection title="Currency field">
+      <DocSection title="Number Input - Currency">
         <Demo>
           <DemoGroup>
             <DollarInput label="Default" style={{ width: '280px' }} />
@@ -2163,7 +2133,7 @@ function NumberDoc() {
         <CodeBlock code={`<DollarInput label="Price per head" />\n<DollarInput label="Price per head" state="error" hint="Must be greater than 0" />`} />
       </DocSection>
 
-      <DocSection title="Tagged field">
+      <DocSection title="Number Input - Tagged">
         <Demo>
           <DemoGroup>
             <DefinedUnitInput label="Default" unit="kg/Head" style={{ width: '280px' }} />
@@ -2178,7 +2148,7 @@ function NumberDoc() {
         <CodeBlock code={`<DefinedUnitInput label="Weight" unit="kg/Head" />\n<DefinedUnitInput label="Price" unit="$/Head" />`} />
       </DocSection>
 
-      <DocSection title="Telephone field">
+      <DocSection title="Number Input - Telephone">
         <Demo>
           <DemoGroup label="Coming soon">
             <span style={{ color: 'var(--color-text-grey)', fontSize: 'var(--type-size-body-md)', fontFamily: 'var(--type-family-primary)' }}>Coming soon</span>
@@ -2186,7 +2156,7 @@ function NumberDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Min / max">
+      <DocSection title="Number Input - Min / max">
         <Demo>
           <DemoGroup>
             <MinMaxInput label="Default" minPlaceholder="Min kg" maxPlaceholder="Max kg" />
@@ -2212,7 +2182,7 @@ function DropdownDoc() {
       description="Select input for choosing a single option from a list."
       figmaNodeId="Components · 172:5260"
     >
-      <DocSection title="Select dropdown">
+      <DocSection title="Dropdown Menu - Select">
         <Demo>
           <DemoGroup>
             <SelectInput
@@ -2255,7 +2225,7 @@ function RadioDoc() {
       description="Single-select control for choosing one option from a group."
       figmaNodeId="Components · 172:5129"
     >
-      <DocSection title="States">
+      <DocSection title="Radio Button - States">
         <Demo>
           <DemoGroup>
             <Radio label="Default" checked={false} onChange={() => {}} />
@@ -2270,7 +2240,7 @@ function RadioDoc() {
         </Demo>
         <CodeBlock code={`<Radio label="Option" checked={checked} onChange={() => setChecked(c => !c)} />`} />
       </DocSection>
-      <DocSection title="Radio Group">
+      <DocSection title="Radio Button - Group">
         <Demo>
           <DemoGroup column>
             <RadioGroup
@@ -2292,15 +2262,16 @@ function RadioDoc() {
 }
 
 function CheckboxDoc() {
-  const [a, setA] = useState(false)
-  const [b, setB] = useState(true)
+  const [assessed, setAssessed] = useState(true)
+  const [sold, setSold]         = useState(false)
+  const [upcoming, setUpcoming] = useState(false)
   return (
     <DocPage
       title="Checkboxes"
       description="Binary toggle with indeterminate state support."
       figmaNodeId="Components · 172:5131"
     >
-      <DocSection title="States">
+      <DocSection title="Checkboxes - States">
         <Demo>
           <DemoGroup>
             <Checkbox label="Default" checked={false} onChange={() => {}} />
@@ -2318,14 +2289,15 @@ function CheckboxDoc() {
         </Demo>
         <CodeBlock code={`<Checkbox label="Option" checked={false} onChange={() => {}} />\n<Checkbox label="Option" checked={true} onChange={() => {}} />\n<Checkbox label="Select all" indeterminate checked={false} onChange={() => {}} />`} />
       </DocSection>
-      <DocSection title="Interactive">
+      <DocSection title="Checkboxes - Group">
         <Demo>
           <DemoGroup column>
-            <Checkbox label="Include sold lots" checked={a} onChange={e => setA(e.target.checked)} />
-            <Checkbox label="Assessed only" checked={b} onChange={e => setB(e.target.checked)} />
+            <Checkbox label="Assessed only" checked={assessed} onChange={e => setAssessed(e.target.checked)} />
+            <Checkbox label="Include sold lots" checked={sold} onChange={e => setSold(e.target.checked)} />
+            <Checkbox label="Upcoming auctions" checked={upcoming} onChange={e => setUpcoming(e.target.checked)} />
           </DemoGroup>
         </Demo>
-        <CodeBlock code={`const [checked, setChecked] = useState(false)\n\n<Checkbox\n  label="Include sold lots"\n  checked={checked}\n  onChange={e => setChecked(e.target.checked)}\n/>`} />
+        <CodeBlock code={`const [checked, setChecked] = useState(false)\n\n<Checkbox label="Assessed only"    checked={checked} onChange={e => setChecked(e.target.checked)} />\n<Checkbox label="Include sold lots" checked={checked} onChange={e => setChecked(e.target.checked)} />`} />
       </DocSection>
     </DocPage>
   )
@@ -2340,7 +2312,7 @@ function ProgressIndicatorDoc() {
       title="Progress Indicator"
       description="Horizontal bar showing process completion. Four variants, two sizes."
     >
-      <DocSection title="Variants">
+      <DocSection title="Progress Indicator - Variants">
         <Demo>
           <DemoGroup label="Default" column>
             <div style={{ width: '320px' }}>
@@ -2361,7 +2333,7 @@ function ProgressIndicatorDoc() {
         <CodeBlock code={`<ProgressIndicator value={72} label="Uploading document" />\n<ProgressIndicator value={100} label="Assessment complete" variant="success" />\n<ProgressIndicator value={45} label="Storage used" variant="warning" />`} />
       </DocSection>
 
-      <DocSection title="Sizes">
+      <DocSection title="Progress Indicator - Sizes">
         <Demo>
           <DemoGroup label="Medium (default)" column>
             <div style={{ width: '320px' }}>
@@ -2376,7 +2348,7 @@ function ProgressIndicatorDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Interactive">
+      <DocSection title="Progress Indicator - Interactive">
         <Demo>
           <DemoGroup label="Drag to update" column>
             <div style={{ width: '320px', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
@@ -2414,7 +2386,7 @@ function ProgressTrackerDoc() {
       title="Progress Tracker"
       description="Stepped indicator for multi-stage workflows. Horizontal and vertical."
     >
-      <DocSection title="Horizontal">
+      <DocSection title="Progress Tracker - Horizontal">
         <Demo>
           <DemoGroup label="Step 1 of 4" column>
             <div style={{ width: '480px' }}>
@@ -2435,7 +2407,7 @@ function ProgressTrackerDoc() {
         <CodeBlock code={`<ProgressTracker\n  steps={[\n    { label: 'Account details' },\n    { label: 'Verification' },\n    { label: 'Listing details' },\n    { label: 'Review & submit' },\n  ]}\n  activeStep={1}\n/>`} />
       </DocSection>
 
-      <DocSection title="Vertical">
+      <DocSection title="Progress Tracker - Vertical">
         <Demo>
           <DemoGroup label="Step 2 of 4" column>
             <ProgressTracker steps={TRACKER_STEPS} activeStep={1} variant="vertical" />
@@ -2444,7 +2416,7 @@ function ProgressTrackerDoc() {
         <CodeBlock code={`<ProgressTracker steps={steps} activeStep={1} variant="vertical" />`} />
       </DocSection>
 
-      <DocSection title="Interactive">
+      <DocSection title="Progress Tracker - Interactive">
         <Demo>
           <DemoGroup label="Horizontal — click to advance" column>
             <div style={{ width: '480px', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
@@ -2484,7 +2456,7 @@ function AnnouncementsDoc() {
       title="Announcements"
       description="Full-width dismissible banner for platform-wide communications."
     >
-      <DocSection title="In context">
+      <DocSection title="Announcements - In context">
         <div style={{ padding: 'var(--spacing-lg)' }}>
         <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
           {visible && (
@@ -2739,13 +2711,13 @@ function TableDoc() {
       title="Table"
       description="Data table with sortable columns, inline editing, and row actions."
     >
-      <DocSection title="Extended — management table">
+      <DocSection title="Table - Extended – management table">
         <div style={{ padding: 'var(--spacing-lg)' }}>
           <ExtendedTableDemo />
         </div>
       </DocSection>
 
-      <DocSection title="Simple — read-only table">
+      <DocSection title="Table - Simple – read-only table">
         <div style={{ padding: 'var(--spacing-lg)' }}>
           <SimpleTableDemo />
         </div>
@@ -2791,7 +2763,7 @@ function SideNavDoc() {
       title="Side Navigation"
       description="Vertical nav panel for dashboard and admin page routing."
     >
-      <DocSection title="Default">
+      <DocSection title="Side Navigation - Default">
         <Demo style={{ padding: 'var(--spacing-lg)', alignItems: 'flex-start' }}>
           <SideNav>
             <NavItem icon="dashboard"     label="Overview"            active={active === 'overview'}   onClick={() => setActive('overview')} />
@@ -2826,7 +2798,7 @@ function TabbedNavDoc() {
       title="Tabbed Navigation"
       description="Tab strip for switching between page sections."
     >
-      <DocSection title="Default">
+      <DocSection title="Tabbed Navigation - Default">
         <Demo>
           <DemoGroup column>
             <TabBar
@@ -2843,7 +2815,7 @@ function TabbedNavDoc() {
         <CodeBlock code={`<TabBar\n  tabs={[\n    { value: 'overview', label: 'Overview' },\n    { value: 'pedigree', label: 'Pedigree' },\n  ]}\n  value={tab}\n  onChange={setTab}\n/>`} />
       </DocSection>
 
-      <DocSection title="With badge">
+      <DocSection title="Tabbed Navigation - With badge">
         <Demo>
           <DemoGroup column>
             <TabBar
@@ -2861,7 +2833,7 @@ function TabbedNavDoc() {
         <CodeBlock code={`<TabBar\n  tabs={[\n    { value: 'all', label: 'All', badge: 24 },\n    { value: 'active', label: 'Active', badge: 6 },\n  ]}\n  value={tab}\n  onChange={setTab}\n/>`} />
       </DocSection>
 
-      <DocSection title="With leading icon">
+      <DocSection title="Tabbed Navigation - With leading icon">
         <Demo>
           <DemoGroup column>
             <TabBar
@@ -2888,7 +2860,7 @@ function CommodityNavDoc() {
       title="Commodity Navigation"
       description="Icon button row for switching between commodity types."
     >
-      <DocSection title="Default">
+      <DocSection title="Commodity Navigation - Default">
         <div style={{ padding: 'var(--spacing-lg)' }}><div style={{ display: 'flex', justifyContent: 'space-between', border: '1px solid var(--color-border-grey-light)', borderRadius: 'var(--radius-lg)', padding: 'var(--spacing-lg)' }}>
           {COMMODITY_ITEMS.map(({ id, label }) => (
             <LargeIconButton
@@ -3256,19 +3228,19 @@ function HeaderContentDoc() {
       title="Content Header"
       description="Page header patterns with titles, metadata, and actions."
     >
-      <DocSection title="Catalogue header">
+      <DocSection title="Page Header - Catalogue header">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <CatalogueHeader />
         </Demo>
       </DocSection>
 
-      <DocSection title="Stud profile header">
+      <DocSection title="Page Header - Stud profile header">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <StudProfileHeader />
         </Demo>
       </DocSection>
 
-      <DocSection title="Lot detail header">
+      <DocSection title="Page Header - Lot detail header">
         <Demo style={{ padding: 'var(--spacing-lg)' }}>
           <LotDetailHeader
             title="Pepperton Poll Dorset - Tag 512"
@@ -3289,7 +3261,7 @@ function TabbedAccordionDoc() {
       title="Tabbed Accordion"
       description="Tabs combined with collapsible accordion sections."
     >
-      <DocSection title="Interactive">
+      <DocSection title="Tabbed Accordion - Interactive">
         <div style={{ padding: 'var(--spacing-lg)' }}>
           <TabbedAccordion
             tabs={TABBED_ACCORDION_DEMO_TABS}
@@ -3553,7 +3525,7 @@ function FlyoutFilterDoc() {
       title="Filter"
       description="Slide-in filter panel with accordion sections."
     >
-      <DocSection title="Interactive">
+      <DocSection title="Filter - Interactive">
         <div style={{ padding: 'var(--spacing-lg)' }}>
           <Button variant="secondary" leadingIcon="filter_list" onClick={() => setOpen(true)}>
             Open filters
@@ -3597,7 +3569,7 @@ function DatePickerDoc() {
       description="Single-date input with a calendar dropdown."
       figmaNodeId="Components · 96:2304"
     >
-      <DocSection title="States">
+      <DocSection title="Date Picker - States">
         <Demo>
           <DemoGroup label="Default">
             <DatePickerDemo />
@@ -3626,7 +3598,7 @@ function ToggleDoc() {
       description="On/off control for activating or deactivating a setting."
       figmaNodeId="Components · 261:657"
     >
-      <DocSection title="Sizes">
+      <DocSection title="Toggle - variants">
         <Demo>
           <DemoGroup label="Large (default)">
             <Toggle label="Enable notifications" checked={a} onChange={e => setA(e.target.checked)} />
@@ -3637,18 +3609,7 @@ function ToggleDoc() {
         </Demo>
         <CodeBlock code={`<Toggle label="Enable notifications" size="lg" checked={on} onChange={e => setOn(e.target.checked)} />\n<Toggle label="Enable notifications" size="sm" checked={on} onChange={e => setOn(e.target.checked)} />`} />
       </DocSection>
-      <DocSection title="States">
-        <Demo>
-          <DemoGroup label="Off">
-            <Toggle checked={false} onChange={() => {}} />
-          </DemoGroup>
-          <DemoGroup label="On">
-            <Toggle checked={true} onChange={() => {}} />
-          </DemoGroup>
-        </Demo>
-        <CodeBlock code={`<Toggle checked={false} onChange={() => {}} />\n<Toggle checked={true} onChange={() => {}} />`} />
-      </DocSection>
-      <DocSection title="With label">
+      <DocSection title="Toggle - With label">
         <Demo>
           <DemoGroup column>
             <Toggle label="Dark mode" checked={c} onChange={e => setC(e.target.checked)} />
@@ -3670,7 +3631,7 @@ function ToastDoc() {
       title="Toast"
       description="Floating notifications that auto-dismiss after 4 seconds."
     >
-      <DocSection title="Variants">
+      <DocSection title="Toast - Variants">
         <Demo>
           <DemoGroup label="Success">
             <Button variant="primary" size="sm" onClick={() => show({ variant: 'success', title: 'Lot saved', message: 'Your changes have been saved successfully.' })}>
@@ -3696,7 +3657,7 @@ function ToastDoc() {
         <CodeBlock code={`const { show } = useToast()\n\nshow({ variant: 'success', title: 'Lot saved',         message: 'Your changes have been saved.' })\nshow({ variant: 'error',   title: 'Submission failed', message: 'Something went wrong.' })\nshow({ variant: 'warning', title: 'Session expiring',  message: 'Session expiring soon.' })\nshow({ variant: 'info',    title: 'Heads up',          message: 'Auction opens in 10 minutes.' })`} />
       </DocSection>
 
-      <DocSection title="With action">
+      <DocSection title="Toast - With action">
         <Demo>
           <DemoGroup label="Info with CTA">
             <Button variant="primary" size="sm" onClick={() => show({ variant: 'info', title: 'New auction listed', message: 'Merino wool ewe flock, 240 head.', action: { label: 'View auction', onClick: () => {} } })}>
@@ -3712,7 +3673,7 @@ function ToastDoc() {
         <CodeBlock code={`show({\n  variant: 'info',\n  title: 'New auction listed',\n  message: 'Merino wool ewe flock, 240 head.',\n  action: { label: 'View auction', onClick: () => navigate('/auction/123') },\n})`} />
       </DocSection>
 
-      <DocSection title="Persistent">
+      <DocSection title="Toast - Persistent">
         <Demo>
           <DemoGroup label="Persistent (no auto-dismiss)">
             <Button variant="secondary" size="sm" onClick={() => show({ variant: 'warning', title: 'Action required', message: 'Please verify your account details.', duration: 0 })}>
@@ -3733,7 +3694,7 @@ function MessageDoc() {
       description="Inline feedback banners for info, warning, and error states."
       figmaNodeId="Components · 182:22244"
     >
-      <DocSection title="Variants">
+      <DocSection title="Message - Variants">
         <Demo>
           <DemoGroup label="Info" column>
             <Message variant="info" heading="Auction closing soon">This auction closes in 2 hours. Make sure your bids are placed.</Message>
@@ -3748,7 +3709,7 @@ function MessageDoc() {
         <CodeBlock code={`<Message variant="info" heading="Auction closing soon">This auction closes in 2 hours.</Message>\n<Message variant="announcement" heading="Dubbo Spring Sale">New auction catalogue is now available.</Message>\n<Message variant="error" heading="Something went wrong">We couldn't process your request.</Message>`} />
       </DocSection>
 
-      <DocSection title="With link">
+      <DocSection title="Message - With link">
         <Demo>
           <DemoGroup label="Info" column>
             <Message variant="info" heading="Auction closing soon" cta={{ label: 'View auction', onClick: () => {} }}>This auction closes in 2 hours. Make sure your bids are placed.</Message>
@@ -3774,7 +3735,7 @@ function TooltipDoc() {
       description="Hover label that provides context for an element."
       figmaNodeId="Components · 183:22289"
     >
-      <DocSection title="Placement">
+      <DocSection title="Tooltip - Placement">
         <Demo>
           <DemoGroup label="Hover each button">
             <Tooltip content="Top tooltip" placement="top">
@@ -3794,7 +3755,7 @@ function TooltipDoc() {
         <CodeBlock code={`<Tooltip content="Save your listing" placement="top">\n  <Button variant="secondary">Save</Button>\n</Tooltip>`} />
       </DocSection>
 
-      <DocSection title="On any element">
+      <DocSection title="Tooltip - On any element">
         <Demo>
           <DemoGroup>
             <Tooltip content="AuctionsPlus brand logo">
@@ -3828,7 +3789,7 @@ function ScrollbarDoc() {
       title="Scrollbar"
       description="Custom scrollbar style used across the doc site. 4px thin thumb with rounded cap on a transparent track."
     >
-      <DocSection title="Vertical">
+      <DocSection title="Scrollbar - Vertical">
         <Demo>
           <DemoGroup>
             <div style={{
@@ -3855,7 +3816,7 @@ function ScrollbarDoc() {
         <CodeBlock code={`::-webkit-scrollbar {\n  width: 4px;\n  height: 4px;\n}\n\n::-webkit-scrollbar-track {\n  background: transparent;\n}\n\n::-webkit-scrollbar-thumb {\n  background: var(--color-bg-grey-light);\n  border-radius: var(--radius-full);\n}\n\n::-webkit-scrollbar-thumb:hover {\n  background: var(--color-border-grey-light);\n}`} />
       </DocSection>
 
-      <DocSection title="Horizontal">
+      <DocSection title="Scrollbar - Horizontal">
         <Demo>
           <DemoGroup>
             <div style={{ width: '320px', overflowX: 'auto' }}>
@@ -3977,7 +3938,7 @@ function MenuItemDoc() {
       title=""
       description="Navigation elements for sidebar, header, and footer contexts."
     >
-      <DocSection title="Dashboard sidebar - Nav item - Large">
+      <DocSection title="Nav Items - Dashboard sidebar - Nav item - Large">
         <Demo>
           <DemoGroup column>
             <div style={{ width: '248px', backgroundColor: 'var(--color-bg-white)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', padding: 'var(--spacing-sm) 0', border: '1px solid var(--color-border-grey-light)' }}>
@@ -3989,7 +3950,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Dashboard sidebar - Nav item - Icon">
+      <DocSection title="Nav Items - Dashboard sidebar - Nav item - Icon">
         <Demo>
           <DemoGroup column>
             <div style={{ display: 'inline-flex', flexDirection: 'column', width: '64px', backgroundColor: 'var(--color-bg-white)', borderRadius: 'var(--radius-sm)', padding: 'var(--spacing-sm) 0', border: '1px solid var(--color-border-grey-light)' }}>
@@ -4001,7 +3962,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Dashboard sidebar - Nav item - Large with child">
+      <DocSection title="Nav Items - Dashboard sidebar - Nav item - with child - Large">
         <Demo>
           <DemoGroup label="Click to expand" column>
             <div style={{ width: '248px', backgroundColor: 'var(--color-bg-white)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', padding: 'var(--spacing-sm) 0', border: '1px solid var(--color-border-grey-light)' }}>
@@ -4014,7 +3975,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Sidebar item - Small">
+      <DocSection title="Nav Items - Sidebar item - Small">
         <Demo>
           <DemoGroup column>
             <div style={{ width: '200px', backgroundColor: 'var(--color-bg-white)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', padding: 'var(--spacing-sm) 0', border: '1px solid var(--color-border-grey-light)' }}>
@@ -4026,7 +3987,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Sidebar item - Small child">
+      <DocSection title="Nav Items - Sidebar item - child - Small">
         <Demo>
           <DemoGroup label="Click to expand" column>
             <div style={{ width: '200px', backgroundColor: 'var(--color-bg-white)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', padding: 'var(--spacing-sm) 0', border: '1px solid var(--color-border-grey-light)' }}>
@@ -4039,7 +4000,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Header item - With leading icon">
+      <DocSection title="Nav Items - Header item - With leading icon">
         <Demo>
           <DemoGroup label="Click to select" column>
             <HeaderSubNavToolsDemo />
@@ -4047,7 +4008,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Header item - With trailing icon">
+      <DocSection title="Nav Items - Header item - With trailing icon">
         <Demo>
           <DemoGroup label="Click to select" column>
             <HeaderSubNavCommodityDemo />
@@ -4055,7 +4016,7 @@ function MenuItemDoc() {
         </Demo>
       </DocSection>
 
-      <DocSection title="Footer item - link">
+      <DocSection title="Nav Items - Footer item - link">
         <Demo>
           <DemoGroup column>
             <div style={{ padding: 'var(--spacing-lg)', backgroundColor: 'var(--color-bg-dark)', borderRadius: 'var(--radius-sm)', display: 'inline-flex', flexDirection: 'column', gap: 'var(--spacing-xs)' }}>
@@ -4084,7 +4045,7 @@ function LogoDoc() {
       description="AuctionsPlus logo in dark, light, and white variants."
       figmaNodeId="Components · 10:4564"
     >
-      <DocSection title="Variants">
+      <DocSection title="Logo - Variants">
         <Demo>
           <DemoGroup label="Dark (default)">
             <div style={{ backgroundColor: 'var(--color-bg-white)', padding: 'var(--spacing-md)', borderRadius: 'var(--radius-sm)', display: 'inline-flex' }}>
@@ -4104,7 +4065,7 @@ function LogoDoc() {
         </Demo>
         <CodeBlock code={`<Logo variant="dark" />\n<Logo variant="light" />\n<Logo variant="white" />`} />
       </DocSection>
-      <DocSection title="Icon only">
+      <DocSection title="Logo - Icon only">
         <Demo>
           <DemoGroup label="Dark">
             <div style={{ backgroundColor: 'var(--color-bg-white)', padding: 'var(--spacing-md)', borderRadius: 'var(--radius-sm)', display: 'inline-flex' }}>
@@ -4124,7 +4085,7 @@ function LogoDoc() {
         </Demo>
         <CodeBlock code={`<Logo variant="dark" iconOnly width="32px" />`} />
       </DocSection>
-      <DocSection title="Sizing">
+      <DocSection title="Logo - Sizing">
         <Demo>
           <DemoGroup label="Small">
             <Logo width="120px" />
@@ -4149,7 +4110,7 @@ function SpecialDoc() {
       description="Search input component."
       figmaNodeId="Components · 172:5260"
     >
-      <DocSection title="Search bar">
+      <DocSection title="Search Input - Variants">
         <Demo>
           <DemoGroup>
             <SearchBar outline style={{ maxWidth: '400px' }} />
