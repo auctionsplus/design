@@ -409,7 +409,7 @@ const PATTERNS_NAV = [
   {
     id: 'pat-content', label: 'Content',
     children: [
-      { id: 'pat-header-content',   label: 'Content Header',   description: 'Content patterns used within page headers, including titles, metadata, and contextual actions.' },
+      { id: 'pat-header-content',   label: 'Page Header',   description: 'Content patterns used within page headers, including titles, metadata, and contextual actions.' },
       { id: 'pat-flyout-filter',    label: 'Filter',           description: 'A slide-in panel from the left containing filter categories as individual accordion sections.' },
       { id: 'pat-tabbed-accordion', label: 'Tabbed Accordion', description: 'A hybrid component combining tab navigation with collapsible accordion sections.' },
       { id: 'pat-table',            label: 'Table',            description: 'A structured data display for listing records with sortable columns and row actions.' },
@@ -3225,7 +3225,7 @@ function StudProfileHeader({ style }) {
 function HeaderContentDoc() {
   return (
     <DocPage
-      title="Content Header"
+      title="Page Header"
       description="Page header patterns with titles, metadata, and actions."
     >
       <DocSection title="Page Header - Catalogue header">
@@ -3246,7 +3246,7 @@ function HeaderContentDoc() {
             title="Pepperton Poll Dorset - Tag 512"
             location="Elmore, VIC"
             lotNumber="Lot 12"
-            cta={{ label: 'Bid to Connect', onClick: () => {} }}
+            cta={{ label: 'Connect to Bid', onClick: () => {} }}
             style={{ border: '1px solid var(--color-border-grey-light)', borderRadius: 'var(--radius-md)', width: '100%', boxSizing: 'border-box' }}
           />
         </Demo>
