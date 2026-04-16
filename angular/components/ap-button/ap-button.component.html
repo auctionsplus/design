@@ -1,0 +1,14 @@
+<button
+  [type]="type"
+  [disabled]="disabled"
+  [ngClass]="classes"
+  (click)="handleClick($event)"
+>
+  @if (leadingIcon) {
+    <span class="btn-icon" aria-hidden="true">{{ leadingIcon }}</span>
+  }
+  <ng-content />
+  @if (trailingIcon) {
+    <span class="btn-icon" aria-hidden="true">{{ trailingIcon }}</span>
+  }
+</button>
