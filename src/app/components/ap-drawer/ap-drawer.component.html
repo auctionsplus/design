@@ -30,10 +30,10 @@
       @if (primaryAction || secondaryAction) {
         <div class="drawer-footer">
           @if (secondaryAction) {
-            <ap-button color="secondary" style="flex:1" (clicked)="secondaryClick.emit()">{{ secondaryAction }}</ap-button>
+            <ap-button color="secondary" (clicked)="secondaryClick.emit()">{{ secondaryAction }}</ap-button>
           }
           @if (primaryAction) {
-            <ap-button color="primary" style="flex:1" (clicked)="primaryClick.emit()">{{ primaryAction }}</ap-button>
+            <ap-button color="primary" (clicked)="primaryClick.emit()">{{ primaryAction }}</ap-button>
           }
         </div>
       }

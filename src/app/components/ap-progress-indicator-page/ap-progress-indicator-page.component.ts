@@ -20,10 +20,7 @@ import { ApProgressIndicatorComponent }  from '../ap-progress-indicator/ap-progr
 export class ApProgressIndicatorPageComponent {
   readonly code =
 `<ap-progress-indicator [value]="68" label="Upload progress" />
-
 <ap-progress-indicator [value]="100" variant="success" label="Complete" />
-
 <ap-progress-indicator [value]="45" variant="warning" label="Capacity" />
-
 <ap-progress-indicator [value]="12" variant="error" label="Storage" />`;
 }

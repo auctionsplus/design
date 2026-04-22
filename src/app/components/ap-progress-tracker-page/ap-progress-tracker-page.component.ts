@@ -23,7 +23,12 @@ export class ApProgressTrackerPageComponent {
     { label: 'Review' },
     { label: 'Published' },
     { label: 'Live' },
-    { label: 'Closed' },
+  ];
+
+  readonly auctionSteps3: TrackerStep[] = [
+    { label: 'Draft' },
+    { label: 'Review' },
+    { label: 'Published' },
   ];
 
   readonly listingSteps: TrackerStep[] = [

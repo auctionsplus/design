@@ -2,7 +2,7 @@
 
   <ap-doc-section title="Announcement — Basic">
     <ap-demo>
-      <ap-demo-group>
+      <ap-demo-group [column]="true">
         @if (showBasic()) {
           <ap-announcement
             title="Scheduled maintenance"
@@ -18,7 +18,7 @@
 
   <ap-doc-section title="Announcement — With action">
     <ap-demo>
-      <ap-demo-group>
+      <ap-demo-group [column]="true">
         @if (showAction()) {
           <ap-announcement
             title="New feature available"

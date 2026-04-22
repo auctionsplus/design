@@ -194,6 +194,7 @@ Always use **Material Symbols Rounded**. Never Outlined, never Sharp.
 ## What NOT to do
 
 - Do not hardcode hex values, rgba values, or raw pixel values in any component
+- For simple doc page tweaks (full width, spacing, colour), make the minimal edit directly — do not read global CSS or layout system files first. Use `style="width:100%"` inline before creating a new CSS file.
 - Do not use Tailwind spacing classes (`px-*`, `py-*`, `p-*`, `m-*`, `gap-*`) in templates
 - Do not use Tailwind's built-in colour scale for brand values
 - Do not use `*ngIf` or `*ngFor`

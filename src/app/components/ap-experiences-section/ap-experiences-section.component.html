@@ -2,16 +2,46 @@
 
   <nav class="ds-section-nav">
     @for (item of nav; track item.id) {
-      <button
-        class="ds-section-nav__item"
-        [class.ds-section-nav__item--active]="active() === item.id"
-        (click)="active.set(item.id)"
-      >{{ item.label }}</button>
+      @if (item.children) {
+        <div>
+          <button
+            class="ds-section-nav__group-toggle"
+            (click)="toggleGroup(item.id)"
+          >
+            {{ item.label }}
+            <span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">
+              {{ openGroups()[item.id] ? 'expand_less' : 'expand_more' }}
+            </span>
+          </button>
+          @if (openGroups()[item.id]) {
+            @for (child of item.children; track child.id) {
+              <button
+                class="ds-section-nav__item"
+                [class.ds-section-nav__item--active]="active() === child.id"
+                style="padding-left:var(--spacing-lg)"
+                (click)="active.set(child.id)"
+              >{{ child.label }}</button>
+            }
+          }
+        </div>
+      } @else {
+        <button
+          class="ds-section-nav__item"
+          [class.ds-section-nav__item--active]="active() === item.id"
+          (click)="active.set(item.id)"
+        >{{ item.label }}</button>
+      }
     }
   </nav>
 
   <div class="ds-section-content">
-    <ap-coming-soon [title]="activeLabel" />
+    @switch (active()) {
+      @case ('exp-website-catalogue')      { <ap-coming-soon title="Catalogue" /> }
+      @case ('exp-website-search-results') { <ap-coming-soon title="Search results" /> }
+      @case ('exp-website-lot-detail')     { <ap-coming-soon title="Lot detail" /> }
+      @case ('exp-website-home-page')      { <ap-coming-soon title="Home page" /> }
+      @default                             { <ap-coming-soon [title]="activeLabel" /> }
+    }
   </div>
 
 </div>

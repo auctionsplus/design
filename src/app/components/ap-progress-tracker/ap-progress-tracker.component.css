@@ -2,33 +2,26 @@
 
 .pt-horizontal {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
-.pt-h-item {
+.pt-h-track {
   display: flex;
-  align-items: flex-start;
-  flex: 1;
-}
-
-.pt-h-item--last {
-  flex: 0;
-}
-
-.pt-h-step {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--spacing-xs);
+  width: 100%;
 }
 
 .pt-h-connector {
   flex: 1;
   height: 2px;
-  margin-top: 13px;
-  margin-left: var(--spacing-sm);
-  margin-right: var(--spacing-sm);
+}
+
+.pt-h-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 /* ── Vertical ───────────────────────────────── */
@@ -53,7 +46,6 @@
   width: 2px;
   flex: 1;
   min-height: 24px;
-  margin: var(--spacing-xs) 0;
 }
 
 .pt-v-right {
@@ -111,6 +103,10 @@
   color: var(--color-text-dark);
   white-space: nowrap;
   text-align: center;
+}
+
+.pt-v-right .pt-label {
+  text-align: left;
 }
 
 .pt-label--active { font-weight: 600; }

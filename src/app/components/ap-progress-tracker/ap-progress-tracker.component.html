@@ -1,36 +1,38 @@
 <!-- Horizontal -->
 @if (variant === 'horizontal') {
   <div class="pt-horizontal">
-    @for (step of steps; track $index; let i = $index; let last = $last) {
-      <div class="pt-h-item" [class.pt-h-item--last]="last">
 
-        <div class="pt-h-step">
-          <!-- Step icon -->
-          @if (stepState(i) === 'complete') {
-            <div class="pt-icon pt-icon--complete">
-              <span class="icon-outlined" style="font-size:16px;line-height:1;color:var(--color-text-white)" aria-hidden="true">check</span>
-            </div>
-          } @else if (stepState(i) === 'active') {
-            <div class="pt-icon pt-icon--active">
-              <div class="pt-icon-dot"></div>
-            </div>
-          } @else {
-            <div class="pt-icon pt-icon--upcoming"></div>
-          }
-
-          <span
-            class="pt-label"
-            [class.pt-label--active]="stepState(i) === 'active'"
-            [class.pt-label--upcoming]="stepState(i) === 'upcoming'"
-          >{{ step.label }}</span>
-        </div>
-
+    <!-- Icons + connectors track -->
+    <div class="pt-h-track">
+      @for (step of steps; track $index; let i = $index; let last = $last) {
+        @if (stepState(i) === 'complete') {
+          <div class="pt-icon pt-icon--complete">
+            <span class="icon-outlined" style="font-size:16px;line-height:1;color:var(--color-text-white)" aria-hidden="true">check</span>
+          </div>
+        } @else if (stepState(i) === 'active') {
+          <div class="pt-icon pt-icon--active">
+            <div class="pt-icon-dot"></div>
+          </div>
+        } @else {
+          <div class="pt-icon pt-icon--upcoming"></div>
+        }
         @if (!last) {
           <div class="pt-h-connector" [style.background-color]="connectorColor(i)"></div>
         }
+      }
+    </div>
 
-      </div>
-    }
+    <!-- Labels row -->
+    <div class="pt-h-labels">
+      @for (step of steps; track $index; let i = $index) {
+        <span
+          class="pt-label"
+          [class.pt-label--active]="stepState(i) === 'active'"
+          [class.pt-label--upcoming]="stepState(i) === 'upcoming'"
+        >{{ step.label }}</span>
+      }
+    </div>
+
   </div>
 }
 

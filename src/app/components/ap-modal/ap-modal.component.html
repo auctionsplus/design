@@ -24,10 +24,10 @@
       @if (primaryAction || secondaryAction) {
         <div class="modal-footer">
           @if (secondaryAction) {
-            <ap-button color="secondary" style="flex:1" (clicked)="secondaryClick.emit()">{{ secondaryAction }}</ap-button>
+            <ap-button color="secondary" (clicked)="secondaryClick.emit()">{{ secondaryAction }}</ap-button>
           }
           @if (primaryAction) {
-            <ap-button [color]="destructive ? 'destructive' : 'primary'" style="flex:1" (clicked)="primaryClick.emit()">{{ primaryAction }}</ap-button>
+            <ap-button [color]="destructive ? 'destructive' : 'primary'" (clicked)="primaryClick.emit()">{{ primaryAction }}</ap-button>
           }
         </div>
       }

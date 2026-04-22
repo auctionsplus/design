@@ -768,6 +768,7 @@
 
 .ds-demo-group__content--column {
   flex-direction: column;
+  flex: 1;
 }
 
 /* ── Props table ────────────────────────────────────────────── */
